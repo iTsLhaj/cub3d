@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 16:26:07 by agaougao          #+#    #+#              #
-#    Updated: 2024/06/13 22:17:49 by marvin           ###   ########.fr        #
+#    Updated: 2024/10/07 15:00:11 by agaougao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ CFLAGS 	= -Wall -Wextra -Werror
 			ftgc_strmapi.c \
 			ftgc_strjoin.c \
 			ftgc_split.c
-			
+
 OBJS	= $(SRCS:.c=.o)
 
 all : $(NAME)
@@ -51,5 +51,5 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	
+
 re: fclean all
