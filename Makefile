@@ -1,13 +1,33 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/07 11:59:00 by agaougao          #+#    #+#              #
-#    Updated: 2024/10/07 12:00:07 by agaougao         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME	=	cub3d
+CC		=	cc
+CFLAGS	=	-Wall -Werror -Wextra -lm -lz
+LIBFT	=	lib/libft/libft.a
+LMLX	=	-lmlx -lXext -lX11
+SOURCES	=	# <source files ...>
+OBJECTS	=	$(SOURCES:.c=.o)
+INCLUDE	=	-I include/
+RM		=	rm -rf
+MK		=	make -C
 
-hada make file akher hna kayn conflict hh
+
+
+all: libft $(NAME)
+
+libft:
+	$(MK) lib/libft
+
+$(NAME): $(OBJECTS)
+	$(CC) $(INCLUDE) $(CFLAGS) $^ -o $@ $(LIBFT) $(LMLX)
+
+%.o: %.c
+	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
+
+clean:
+	$(RM) $(OBJECTS)
+	$(MK) lib/libft clean
+
+fclean: clean
+	$(RM) $(NAME)
+	$(MK) lib/libft fclean
+
+re: fclean all
