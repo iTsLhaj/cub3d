@@ -1,7 +1,8 @@
 NAME	=	cub3d
 CC		=	cc
 CFLAGS	=	-Wall -Werror -Wextra -lm -lz
-LIBFT	=	lib/libft/libft.a
+LIBS	=	lib/libft/libft.a	\
+			libs/gcollector/gcollector.a
 LMLX	=	-lmlx -lXext -lX11
 SOURCES	=	# <source files ...>
 OBJECTS	=	$(SOURCES:.c=.o)
@@ -11,13 +12,14 @@ MK		=	make -C
 
 
 
-all: libft $(NAME)
+all: mklib $(NAME)
 
-libft:
+mklib:
 	$(MK) lib/libft
+	$(MK) lib/gcollector
 
 $(NAME): $(OBJECTS)
-	$(CC) $(INCLUDE) $(CFLAGS) $^ -o $@ $(LIBFT) $(LMLX)
+	$(CC) $(INCLUDE) $(CFLAGS) $^ -o $@ $(LIBS) $(LMLX)
 
 %.o: %.c
 	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
@@ -25,9 +27,11 @@ $(NAME): $(OBJECTS)
 clean:
 	$(RM) $(OBJECTS)
 	$(MK) lib/libft clean
+	$(MK) lib/gcollector clean
 
 fclean: clean
 	$(RM) $(NAME)
 	$(MK) lib/libft fclean
+	$(MK) lib/gcollector fclean
 
 re: fclean all
