@@ -17,6 +17,13 @@ typedef struct    s_cub3d
 	void	*img;
 	char **map;
 	char *file;
+	char *no;
+	char *so;
+	char *we;
+	char *ea;
+	char **f;
+	char **c;
 }	t_cub3d;
 
+int count_commas(char *str);
 #endif
