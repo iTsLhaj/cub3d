@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:37:08 by agaougao          #+#    #+#             */
-/*   Updated: 2024/10/11 17:18:14 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:10:50 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,35 @@ int check_char(char **map)
 	p_count = 0;
 	while (map[i])
 	{
-		j = 0;
-		while(map[i][j])
+		if( map[i][0] == 'N' || map[i][0] == 'S' || map[i][0] == 'E'
+			|| map[i][0] == 'W' || map[i][0] == 'F' || map[i][0] == 'C'
+			|| map[i][0] == '\n')
+			i++;
+		else
 		{
-			if(map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'N'
-				&& map[i][j] != 'S'	&& map[i][j] != 'E' && map[i][j] != 'W'
-					&& map[i][j] != ' ')
-				return (0);
-			else if( map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
-				|| map[i][j] == 'W')
-				p_count++;
-			if(p_count != 1 && p_count != 0)
-				return (0);
-			j++;
+			j = 0;
+			while(map[i][j])
+			{
+				if(map[i][j] == '0' || map[i][j] == '1' || map[i][j] == ' ')
+				{
+					if(map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'N'
+						&& map[i][j] != 'S'	&& map[i][j] != 'E' && map[i][j] != 'W'
+							&& map[i][j] != ' ')
+							return (0);
+					else if( map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
+						|| map[i][j] == 'W')
+						p_count++;
+					if(p_count != 1 && p_count != 0)
+						return (0);
+				}
+				j++;
+			}
 		}
 		i++;
 	}
-	if(p_count != 1)
-		return (0);
 	return (1);
 }
+
 char **get_map(char *file)
 {
 	int fd;
@@ -99,15 +108,20 @@ int check_compass(t_cub3d *cube)
 			|| cube->map[i][0] == 'E' || cube->map[i][0] == 'W'
 			|| cube->map[i][0] == 'F' || cube->map[i][0] == 'C')
 			ft_set_data(cube, i, 0);
-		else
-			return (1);
 		i++;
 	}
-	if ((!cube->no && !cube->we && !cube->ea && !cube->so) || (!cube->c)
-			|| (!cube->f))
+	if (!cube->no ||!cube->we ||!cube->ea ||!cube->so || !cube->c
+		|| !cube->f)
+			return (1);
+	if (ft_check_for_space(cube->no) || ft_check_for_space(cube->so)
+		|| ft_check_for_space(cube->we) || ft_check_for_space(cube->ea)
+		|| ft_check_for_space(cube->f[0]) || ft_check_for_space(cube->f[1])
+		|| ft_check_for_space(cube->f[2]) || ft_check_for_space(cube->c[0])
+		|| ft_check_for_space(cube->c[1]) || ft_check_for_space(cube->c[2]))
 		return (1);
 	return (0);
 }
+
 int check_map(t_cub3d *cube, char **av)
 {
 	cube->file = av[1];
@@ -120,8 +134,10 @@ int check_map(t_cub3d *cube, char **av)
 	cube->map = get_map(cube->file);
 	if(check_compass(cube))
 		return (1);
-	// if(check_char(cube->map) == 0)
-	// 	return (1);
+	if(check_char(cube->map) == 0)
+		return (1);
+	if(!check_map_wall(cube))
+		return (1);
 	return (0);
 }
 int check_arg(int ac , char **av)

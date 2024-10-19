@@ -1,56 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   check_map_wall.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 17:08:44 by agaougao          #+#    #+#             */
-/*   Updated: 2024/10/16 16:35:43 by agaougao         ###   ########.fr       */
+/*   Created: 2024/10/16 16:00:45 by agaougao          #+#    #+#             */
+/*   Updated: 2024/10/16 17:04:44 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<cub3d.h>
 
-int count_commas(char *str)
+int check_map_wall(t_cub3d *cube)
 {
 	int i;
-	int count;
+	int j;
+	char **map_cpy;
 
 	i = 0;
-	count = 0;
-	while (str[i])
+	while(map[i])
 	{
-		if (str[i] == ',')
-            count++;
-        i++;
+		j = 0;
+		if(check_is_empty(map[i]) == 0)
+		{
+			while(map[i][j])
+			{
+				if()
+				j++;
+			}
+		}
 	}
-	return(count);
-}
-
-int	ft_check_for_space(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ' ')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-int check_is_empty(char *line)
-{
-	int i;
-
-	i = 0;
-	while(line[i])
-	{
-		if((line[i] >= 9 && line[i] <= 13) || line[i] != '\n')
-			return (1);
-		i++;
-	}
-	return (0);
 }

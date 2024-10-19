@@ -1,12 +1,13 @@
 NAME	=	cub3d
-CC		=	cc
+CC		=	cc -g
 # CFLAGS	=	-Wall -Werror -Wextra # -lm -lz
 LIBS	=	libs/libft/libft.a	\
 			libs/gcollector/gcollector.a
 LMLX	=	-lmlx -lXext -lX11
 SOURCES	=	libs/get_next_line/get_next_line.c	\
 			src/main.c \
-			src/utils.c
+			src/utils.c \
+			src/check_map_wall.c
 OBJECTS	=	$(SOURCES:.c=.o)
 INCLUDE	=	-I include/
 RM		=	rm -rf
