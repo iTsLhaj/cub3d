@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:37:08 by agaougao          #+#    #+#             */
-/*   Updated: 2024/10/16 17:10:50 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:23:01 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int check_char(char **map)
 	while (map[i])
 	{
 		if( map[i][0] == 'N' || map[i][0] == 'S' || map[i][0] == 'E'
-			|| map[i][0] == 'W' || map[i][0] == 'F' || map[i][0] == 'C'
-			|| map[i][0] == '\n')
+			|| map[i][0] == 'W' || map[i][0] == 'F' || map[i][0] == 'C')
 			i++;
 		else
 		{
@@ -102,12 +101,14 @@ int check_compass(t_cub3d *cube)
 	int i;
 
 	i = 0;
-	while (cube->map[i])
+	while (cube->map[i] && i < 6)
 	{
 		if (cube->map[i][0] == 'N' || cube->map[i][0] == 'S'
 			|| cube->map[i][0] == 'E' || cube->map[i][0] == 'W'
 			|| cube->map[i][0] == 'F' || cube->map[i][0] == 'C')
 			ft_set_data(cube, i, 0);
+		else
+		 return (1);
 		i++;
 	}
 	if (!cube->no ||!cube->we ||!cube->ea ||!cube->so || !cube->c
@@ -124,6 +125,9 @@ int check_compass(t_cub3d *cube)
 
 int check_map(t_cub3d *cube, char **av)
 {
+	int i;
+
+	i = 0;
 	cube->file = av[1];
 	cube->ea = NULL;
 	cube->no = NULL;
@@ -132,11 +136,15 @@ int check_map(t_cub3d *cube, char **av)
 	cube->f = NULL;
 	cube->c = NULL;
 	cube->map = get_map(cube->file);
+	while(cube->map[i])
+		i++;
+	if(i < 5)
+		return(1);
 	if(check_compass(cube))
 		return (1);
 	if(check_char(cube->map) == 0)
 		return (1);
-	if(!check_map_wall(cube))
+	if(check_map_wall(cube))
 		return (1);
 	return (0);
 }
@@ -155,11 +163,16 @@ int check_arg(int ac , char **av)
 int main(int ac , char **av)
 {
 	t_cub3d *cube;
+	t_gcollector collector;
+	t_gcollector *cp;
 
+	cp = &collector;
+	ft_bzero(cp, sizeof(t_gcollector));
 	cube = malloc(sizeof(t_cub3d));
 	if(check_arg(ac , av))
 		return(ft_putstr_fd("failed on argument\n",2), 1);
 	if(check_map(cube , av))
 	    return(ft_putstr_fd("failed on map\n",2), 1);
+	gc_free(&cp);
 	return 0;
 }
