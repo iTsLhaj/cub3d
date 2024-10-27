@@ -7,7 +7,8 @@ LMLX	=	-lmlx -lXext -lX11
 SOURCES	=	libs/get_next_line/get_next_line.c	\
 			src/main.c \
 			src/utils.c \
-			src/check_map_wall.c
+			src/check_map_wall.c \
+			src/check_wall.c
 OBJECTS	=	$(SOURCES:.c=.o)
 INCLUDE	=	-I include/
 RM		=	rm -rf

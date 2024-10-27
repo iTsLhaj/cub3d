@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:00:45 by agaougao          #+#    #+#             */
-/*   Updated: 2024/10/22 18:54:21 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/10/27 16:48:13 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,7 @@ int	check_first_wall(char **map)
 		j++;
 	}
 	if (count == len)
-	{
 		return (1);
-	}
 	return (0);
 }
 
@@ -139,22 +137,44 @@ int	check_sides(char **map)
 	int	len;
 
 	i = 1;
-	len = get_len(map) - 2;
-	while (i <= len)
+	while(map[i])
 	{
-		j = ft_strlen(map[i]) - 1;
-		if (map[i][0] != '1' || map[i][j] != ' ' || map[i][j] != '1')
+		j = 0;
+		while(map[i][j])
 		{
-			printf("%d\n", i);
-			printf("hona->%ckk\n", map[i][0]);
-			printf("here->%ckk\n", map[i][j]);
-			return (0);
+			if(map[i][j] == ' ')
+				j++;
+			else
+				break;
 		}
+		if(map[i][j] != '1')
+			return (0);
 		i++;
 	}
 	return (1);
 }
+int check_other_side(char **map)
+{
+	int i;
+	int len;
 
+	i = 0;
+	while(map[i])
+	{
+		len = ft_strlen(map[i]) - 1;
+		while(map[i][len])
+		{
+			if(map[i][len] == ' ')
+				len--;
+			else
+				break;
+		}
+		if(map[i][len] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 int check_map_wall(t_cub3d *cube)
 {
 	int i;
@@ -163,7 +183,10 @@ int check_map_wall(t_cub3d *cube)
 	i = 0;
 	tmp = ft_copy_map_to_rect_map(cube->map + 6);
 	if(!check_first_wall(tmp) || !check_last_wall(tmp)
-		|| !check_sides(tmp))
+		|| !check_sides(tmp) || !check_other_side(tmp))
+		return (1);
+
+	if(!check_wall_len(tmp))
 		return (1);
 	return(0);
 }

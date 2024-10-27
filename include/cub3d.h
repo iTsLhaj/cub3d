@@ -30,4 +30,5 @@ int count_commas(char *str);
 int	ft_check_for_space(char *str);
 int check_is_empty(char *line);
 int check_map_wall(t_cub3d *cube);
+int check_wall_len(char **map);
 #endif
