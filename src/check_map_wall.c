@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:00:45 by agaougao          #+#    #+#             */
-/*   Updated: 2024/10/27 16:48:13 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/11/02 17:16:07 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,6 @@ int check_map_wall(t_cub3d *cube)
 	if(!check_first_wall(tmp) || !check_last_wall(tmp)
 		|| !check_sides(tmp) || !check_other_side(tmp))
 		return (1);
-
 	if(!check_wall_len(tmp))
 		return (1);
 	return(0);

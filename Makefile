@@ -1,5 +1,6 @@
 NAME	=	cub3d
 CC		=	cc -g
+# CC		=	cc -g -fsanitize=address
 # CFLAGS	=	-Wall -Werror -Wextra # -lm -lz
 LIBS	=	libs/libft/libft.a	\
 			libs/gcollector/gcollector.a
@@ -9,6 +10,7 @@ SOURCES	=	libs/get_next_line/get_next_line.c	\
 			src/utils.c \
 			src/check_map_wall.c \
 			src/check_wall.c
+
 OBJECTS	=	$(SOURCES:.c=.o)
 INCLUDE	=	-I include/
 RM		=	rm -rf

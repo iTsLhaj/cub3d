@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:00:43 by agaougao          #+#    #+#             */
-/*   Updated: 2024/10/07 16:52:59 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:23:29 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int		ft_tolower(int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *str, const char *str2, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_strlen(const char *s);
+int		ft_strlen(char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 char	*ft_strdup(const char *s);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
-char	*ft_strchr(const char *s, int c);
+char	*ft_strchr( char *s, int c);
 void	*ft_memset(void *str, int c, size_t n);
 void	*ft_memmove(void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);

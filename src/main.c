@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:37:08 by agaougao          #+#    #+#             */
-/*   Updated: 2024/10/21 15:23:01 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/11/02 21:44:59 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,32 @@ int check_char(char **map)
 	int j;
 	int p_count;
 
-	i = 0;
+	i = 6;
 	p_count = 0;
+	
 	while (map[i])
-	{
-		if( map[i][0] == 'N' || map[i][0] == 'S' || map[i][0] == 'E'
-			|| map[i][0] == 'W' || map[i][0] == 'F' || map[i][0] == 'C')
-			i++;
-		else
+	{	
+		j = 0;
+		while(map[i][j])
 		{
-			j = 0;
-			while(map[i][j])
-			{
-				if(map[i][j] == '0' || map[i][j] == '1' || map[i][j] == ' ')
+			if(map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'N'
+				&& map[i][j] != 'S'	&& map[i][j] != 'E' && map[i][j] != 'W'
+					&& map[i][j] != ' ')
 				{
-					if(map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'N'
-						&& map[i][j] != 'S'	&& map[i][j] != 'E' && map[i][j] != 'W'
-							&& map[i][j] != ' ')
-							return (0);
-					else if( map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
-						|| map[i][j] == 'W')
-						p_count++;
-					if(p_count != 1 && p_count != 0)
-						return (0);
+					puts(&map[i][j]);	
+					return (1);
 				}
-				j++;
+			if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
+				|| map[i][j] == 'W')
+			{
+				p_count++;
 			}
+			j++;
 		}
 		i++;
 	}
+	if(p_count == 1)
+		return (0);
 	return (1);
 }
 
@@ -141,9 +138,13 @@ int check_map(t_cub3d *cube, char **av)
 	if(i < 5)
 		return(1);
 	if(check_compass(cube))
+	{
 		return (1);
-	if(check_char(cube->map) == 0)
+	}
+	if(check_char(cube->map))
+	{
 		return (1);
+	}
 	if(check_map_wall(cube))
 		return (1);
 	return (0);

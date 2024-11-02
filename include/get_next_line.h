@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:06:21 by agaougao          #+#    #+#             */
-/*   Updated: 2024/10/07 15:05:00 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:24:46 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include <cub3d.h>
+#include "libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1337
 # endif
 char	*get_next_line(int fd);
-
 #endif
