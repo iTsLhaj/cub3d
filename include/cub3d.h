@@ -24,6 +24,8 @@ typedef struct    s_cub3d
 	char *ea;
 	char **f;
 	char **c;
+	int floor_color;
+	int ceiling_color;
 }	t_cub3d;
 
 int count_commas(char *str);

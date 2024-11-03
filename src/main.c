@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:37:08 by agaougao          #+#    #+#             */
-/*   Updated: 2024/11/02 21:44:59 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/11/03 08:21:11 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,20 @@ int check_compass(t_cub3d *cube)
 	return (0);
 }
 
+int convert_color(t_cub3d *cube)
+{
+	int red;
+    int green;
+    int blue;
+
+    red = ft_atoi(cube->c[0]);
+    green = ft_atoi(cube->c[1]);
+    blue = ft_atoi(cube->c[2]);
+    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255)
+        return (-1);
+    return (red << 16 | green << 8 | blue);
+}
+
 int check_map(t_cub3d *cube, char **av)
 {
 	int i;
@@ -138,17 +152,16 @@ int check_map(t_cub3d *cube, char **av)
 	if(i < 5)
 		return(1);
 	if(check_compass(cube))
-	{
 		return (1);
-	}
 	if(check_char(cube->map))
-	{
 		return (1);
-	}
 	if(check_map_wall(cube))
 		return (1);
+	cube->ceiling_color = convert_color(cube);
+	cube->floor_color = convert_color(cube);
 	return (0);
 }
+
 int check_arg(int ac , char **av)
 {
 	char *tmp;
