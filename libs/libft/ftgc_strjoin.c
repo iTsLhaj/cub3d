@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ftgc_strjoin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maomao <hmouhib@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 00:29:52 by maomao            #+#    #+#             */
-/*   Updated: 2024/08/12 23:38:56 by maomao           ###   ########.fr       */
+/*   Updated: 2024/11/30 04:56:51 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ftgc_strjoin(char const *s1, char const *s2, t_gcollector *collector)
+char	*ftgc_strjoin(char const *s1, char const *s2, t_ncollector **collector)
 {
 	size_t	i;
 	size_t	j;
@@ -24,7 +24,7 @@ char	*ftgc_strjoin(char const *s1, char const *s2, t_gcollector *collector)
 		return ((char *)s2);
 	if (!s2)
 		return ((char *)s1);
-	str = (char *)gc_malloc(collector, (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = (char *)n_malloc(collector, (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

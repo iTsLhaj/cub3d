@@ -17,11 +17,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include <cub3d.h>
-#include "libft.h"
+# include "libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1337
 # endif
+
 char	*get_next_line(int fd);
+
 #endif

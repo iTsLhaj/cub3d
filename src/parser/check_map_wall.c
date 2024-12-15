@@ -175,17 +175,19 @@ int check_other_side(char **map)
 	}
 	return (1);
 }
-int check_map_wall(t_cub3d *cube)
+int check_map_wall(t_game *cube)
 {
 	int i;
 	char **tmp;
 
 	i = 0;
-	tmp = ft_copy_map_to_rect_map(cube->map + 6);
+	tmp = ft_copy_map_to_rect_map(cube->map->map + 6);
 	if(!check_first_wall(tmp) || !check_last_wall(tmp)
 		|| !check_sides(tmp) || !check_other_side(tmp))
 		return (1);
 	if(!check_wall_len(tmp))
 		return (1);
+	cube->map->width = get_max_width(cube->map->map + 6);
+	cube->map->height = get_len(cube->map->map + 6);
 	return(0);
 }

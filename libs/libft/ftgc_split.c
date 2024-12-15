@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ftgc_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maomao <hmouhib@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 00:29:52 by maomao            #+#    #+#             */
-/*   Updated: 2024/08/12 22:45:53 by maomao           ###   ########.fr       */
+/*   Updated: 2024/11/30 04:57:25 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static char	**split_o(
 	char const *s,
 	char c,
 	char **array,
-	t_gcollector *collector
+	t_ncollector **collector
 )
 {
 	size_t			i;
@@ -88,7 +88,7 @@ static char	**split_o(
 	return (array);
 }
 
-char	**ftgc_split(char const *s, char c, t_gcollector *collector)
+char	**ftgc_split(char const *s, char c, t_ncollector **collector)
 {
 	char	**array;
 	size_t	words;
@@ -96,7 +96,7 @@ char	**ftgc_split(char const *s, char c, t_gcollector *collector)
 	if (!s)
 		return (NULL);
 	words = words_count((char *)s, c);
-	array = (char **)gc_malloc(collector, sizeof(char *) * (words + 1));
+	array = (char **)n_malloc(collector, sizeof(char *) * (words + 1));
 	if (!array)
 		return (NULL);
 	array = split_o(s, c, array, collector);

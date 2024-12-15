@@ -1,43 +1,44 @@
-NAME	=	cub3d
-CC		=	cc -g
-# CC		=	cc -g -fsanitize=address
-# CFLAGS	=	-Wall -Werror -Wextra # -lm -lz
-LIBS	=	libs/libft/libft.a	\
-			libs/gcollector/gcollector.a
-LMLX	=	-lmlx -lXext -lX11
-SOURCES	=	libs/get_next_line/get_next_line.c	\
-			src/main.c \
-			src/utils.c \
-			src/check_map_wall.c \
-			src/check_wall.c
+NAME		=	cub3d
+CC			=	cc
+CFLAGS		=	-g3 # -fsanitize=address # -Wall -Wextra -Werror
+SRC			=	src/main.c									\
+				libs/get_next_line/get_next_line.c			\
+				libs/get_next_line/get_next_line_utils.c	\
+				src/parser/utils.c							\
+				src/parser/check_map_wall.c					\
+				src/parser/check_wall.c						\
+				src/parser/checks.c							\
+				src/engine/init.c							\
+				src/engine/hooks.c							\
+				src/engine/draw.c							\
+				src/engine/movement.c						\
+				src/engine/utils.c							\
+				src/engine/raycaster/raycaster.c			\
+				src/engine/raycaster/inters.c				\
+				src/engine/raycaster/utils.c				\
+				src/engine/render.c							\
+				src/parser/utils.c
+OBJ			=	$(SRC:.c=.o)
+INC			=	-I include/
+LIBS		=	libs/pre-compiled/libft.a libs/pre-compiled/libncollector.a
+LMLX		=	-lmlx -lXext -lX11 -lm -lz
 
-OBJECTS	=	$(SOURCES:.c=.o)
-INCLUDE	=	-I include/
-RM		=	rm -rf
-MK		=	make -C
 
 
+all: $(NAME)
 
-all: mklib $(NAME)
-
-mklib:
-	$(MK) libs/libft
-	$(MK) libs/gcollector
-
-$(NAME): $(OBJECTS)
-	$(CC) $(INCLUDE) $(CFLAGS) $^ -o $@ $(LIBS) $(LMLX)
+$(NAME): $(OBJ)
+	$(CC) $(INC) $^ -o $@ $(CFLAGS) $(LIBS) $(LMLX)
 
 %.o: %.c
-	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
+	$(CC) $(INC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJECTS)
-	$(MK) libs/libft clean
-	$(MK) libs/gcollector clean
+	rm -f $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
-	$(MK) libs/libft fclean
-	$(MK) libs/gcollector fclean
+	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

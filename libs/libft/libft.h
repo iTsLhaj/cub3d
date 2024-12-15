@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:00:43 by agaougao          #+#    #+#             */
-/*   Updated: 2024/11/01 20:25:21 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/11/30 04:53:57 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "../gcollector/include/gcollector.h"
+# include "../nyan-collector/include/ncollector.h"
 # include <stdint.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-// # include "../get_next_line/get_next_line.h"
-
 
 typedef struct s_list
 {
@@ -61,7 +59,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putchar_fd(char c, int fd);
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
-char				*ft_strjoin(char  *s1, char  *s2);
+char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s1, char const *set);
@@ -80,19 +78,19 @@ int					ft_lstsize(t_list *lst);
 
 // garbage collected :)
 char				*ftgc_strtrim(char const *s1, char const *set,
-						t_gcollector *collector);
+						t_ncollector **collector);
 void				*ftgc_calloc(size_t s, size_t size,
-						t_gcollector *collector);
-t_list				*ftgc_lstnew(void *content, t_gcollector *collector);
-char				*ftgc_itoa(int n, t_gcollector *collector);
+						t_ncollector **collector);
+t_list				*ftgc_lstnew(void *content, t_ncollector **collector);
+char				*ftgc_itoa(int n, t_ncollector **collector);
 char				*ftgc_substr(char const *s, unsigned int start, size_t len,
-						t_gcollector *collector);
-char				*ftgc_strdup(const char *s, t_gcollector *collector);
+						t_ncollector **collector);
+char				*ftgc_strdup(const char *s, t_ncollector **collector);
 char				*ftgc_strmapi(char const *s, char (*f)(unsigned int, char),
-						t_gcollector *collector);
+						t_ncollector **collector);
 char				*ftgc_strjoin(char const *s1, char const *s2,
-						t_gcollector *collector);
+						t_ncollector **collector);
 char				**ftgc_split(char const *s, char c,
-						t_gcollector *collector);
+						t_ncollector **collector);
 
 #endif

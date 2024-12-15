@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ftgc_substr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maomao <hmouhib@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 00:29:52 by maomao            #+#    #+#             */
-/*   Updated: 2024/08/12 22:45:53 by maomao           ###   ########.fr       */
+/*   Updated: 2024/11/30 04:56:51 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 char	*ftgc_substr(char const *s, unsigned int start, size_t len,
-		t_gcollector *collector)
+		t_ncollector **collector)
 {
 	size_t	i;
 	size_t	j;
@@ -21,7 +21,7 @@ char	*ftgc_substr(char const *s, unsigned int start, size_t len,
 
 	if (!s)
 		return (0);
-	str = (char *)gc_malloc(collector, (len + 1));
+	str = (char *)n_malloc(collector, (len + 1));
 	i = 0;
 	j = 0;
 	if (!str)

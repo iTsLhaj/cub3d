@@ -1,36 +1,29 @@
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <mlx.h>
+# include <math.h>
 # include <libft.h>
 # include <get_next_line.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <math.h>
-# include <mlx.h>
-# include <fcntl.h>
-# include <gcollector.h>
 
+# define WIN_WIDTH			1280
+# define WIN_HEIGHT			960
+# define WIN_TITLE			"CUB3D"
+# define MOVE_SPEED			4.25
+# define ROT_SPEED			0.05
+# define M_PI				3.14159265358979323846
+# define TILE_SIZE			64
+# define FOV_DEG			60
+# define FOV_RD				FOV_DEG * (M_PI / 180)
+# define COLOR_PRIMARY		0x343131
+# define COLOR_SECONDARY	0xA04747
+# define COLOR_FLOOR		0x9B7653
+# define COLOR_CEILING		0xD9EAFD
 
-typedef struct    s_cub3d
-{
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char **map;
-	char *file;
-	char *no;
-	char *so;
-	char *we;
-	char *ea;
-	char **f;
-	char **c;
-	int floor_color;
-	int ceiling_color;
-}	t_cub3d;
+# include <types.h>
+# include <protos.h>
 
-int count_commas(char *str);
-int	ft_check_for_space(char *str);
-int check_is_empty(char *line);
-int check_map_wall(t_cub3d *cube);
-int check_wall_len(char **map);
 #endif

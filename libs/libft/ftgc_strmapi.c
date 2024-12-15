@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ftgc_strmapi.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maomao <hmouhib@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 00:29:52 by maomao            #+#    #+#             */
-/*   Updated: 2024/08/12 22:45:53 by maomao           ###   ########.fr       */
+/*   Updated: 2024/11/30 04:56:51 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 char	*ftgc_strmapi(char const *s, char (*f)(unsigned int, char),
-		t_gcollector *collector)
+		t_ncollector **collector)
 {
 	unsigned int	i;
 	size_t			len;
 	char			*string;
 
 	len = ft_strlen(s) + 1;
-	string = (char *)gc_malloc(collector, len);
+	string = (char *)n_malloc(collector, len);
 	if (!string)
 		return (NULL);
 	i = 0;

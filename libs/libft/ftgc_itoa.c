@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ftgc_itoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:32:00 by agaougao          #+#    #+#             */
-/*   Updated: 2024/04/23 17:59:31 by agaougao         ###   ########.fr       */
+/*   Updated: 2024/11/30 04:56:51 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ static void	init_nb(unsigned int *nb, int n, char *buffer)
 		*nb = n;
 }
 
-char	*ftgc_itoa(int n, t_gcollector *collector)
+char	*ftgc_itoa(int n, t_ncollector **collector)
 {
 	unsigned int	nb;
 	int				size;
 	char			*buffer;
 
 	size = get_nsize(n);
-	buffer = (char *)gc_malloc(collector, size + 1);
+	buffer = (char *)n_malloc(collector, size + 1);
 	if (!buffer)
 		return (NULL);
 	buffer[size] = 0;
