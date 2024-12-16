@@ -33,6 +33,6 @@ void	cast_rays(t_game *game)
 
 		ray_index++;
 		ray.angle += (FOV_RD / WIN_WIDTH);
-		}
+	}
 	// exit(0);
 }

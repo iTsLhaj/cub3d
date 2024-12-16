@@ -182,12 +182,18 @@ int check_map_wall(t_game *cube)
 
 	i = 0;
 	tmp = ft_copy_map_to_rect_map(cube->map->map + 6);
+	cube->map->map = tmp;
+	// while(tmp[i])
+	// {
+	// 	puts(tmp[i]);
+	// 	i++;
+	// }
 	if(!check_first_wall(tmp) || !check_last_wall(tmp)
 		|| !check_sides(tmp) || !check_other_side(tmp))
 		return (1);
 	if(!check_wall_len(tmp))
 		return (1);
-	cube->map->width = get_max_width(cube->map->map + 6);
-	cube->map->height = get_len(cube->map->map + 6);
+	cube->map->width = get_max_width(cube->map->map);
+	cube->map->height = get_len(cube->map->map);
 	return(0);
 }

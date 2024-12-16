@@ -9,6 +9,7 @@ static double	get_player(char *c)
 		return (-1.0f);
 	else
 	{
+		printf("[DEBUG]: player direction => %c\n", *c);
 		if (*c == 'E')
 			dir = 0;
 		else if (*c == 'N')
@@ -17,7 +18,7 @@ static double	get_player(char *c)
 			dir = M_PI;
 		else if (*c == 'S')
 			dir = 3 * M_PI / 2;
-		*c = 0;
+		// *c = 1;
 		return (dir);
 	}
 }
@@ -66,15 +67,18 @@ void	init_player(t_game *cube, t_player *player)
 		{
 			d = get_player(&cube->map->map[x][y]);
 			if (d != -1.0f)
-			{
-				player->pos_x = x * TILE_SIZE;
-				player->pos_y = y * TILE_SIZE;
-				player->angle_dir = d;
-			}
+				break ;
 			y++;
 		}
+		if (d != -1.0f)
+			break ;
 		x++;
 	}
+	player->pos_y = x * TILE_SIZE + TILE_SIZE / 2;
+	player->pos_x = y * TILE_SIZE + TILE_SIZE / 2;
+	printf("[DEBUG]: player position => (%i:%f, %i:%f)[%f]\n",
+		x, player->pos_x, y, player->pos_y, d);
+	player->angle_dir = d;
 	player->dir_x = cos(player->angle_dir);
 	player->dir_y = sin(player->angle_dir);
 }

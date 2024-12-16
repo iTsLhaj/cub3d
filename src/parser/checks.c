@@ -131,6 +131,6 @@ int check_map(t_game *cube, char **av)
 		return (1);
 	cube->ceiling_color = convert_color(cube);
 	cube->floor_color = convert_color(cube);
-	cube->map->map = &cube->map->map[6];
+	// cube->map->map = &cube->map->map[6];
 	return (0);
 }
