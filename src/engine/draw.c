@@ -3,33 +3,33 @@
 
 static void tile_put(t_game *game, int x, int y, int color)
 {
-	int	tx;
-	int	ty;
+    int tx;
+    int ty;
 
-	ty = 0;
-	while (ty < TILE_SIZE)
-	{
-		tx = 0;
-		while (tx < TILE_SIZE)
-		{
-			pixel_put(
-				game,
-				x + tx,
-				y + ty,
-				color
-			);
-			tx++;
-		}
-		ty++;
-	}
+    ty = 0;
+    while (ty < TILE_SIZE)
+    {
+        tx = 0;
+        while (tx < TILE_SIZE)
+        {
+            pixel_put(
+                game,
+                x + tx,
+                y + ty,
+                color
+            );
+            tx++;
+        }
+        ty++;
+    }
 }
 
-static void	draw_line(t_game *game, int line_size)
+static void draw_line(t_game *game, int line_size)
 {
-	int start_x = game->player->pos_x;
-	int start_y = game->player->pos_y;
-	double dir_x = game->player->dir_x;
-	double dir_y = game->player->dir_y;
+    int start_x = game->player->pos_x;
+    int start_y = game->player->pos_y;
+    double dir_x = game->player->dir_x;
+    double dir_y = game->player->dir_y;
     int end_x = start_x + (int)(dir_x * line_size);
     int end_y = start_y + (int)(dir_y * line_size);
     int dx = abs(end_x - start_x);
@@ -57,25 +57,25 @@ static void	draw_line(t_game *game, int line_size)
     }
 }
 
-void	render_map(t_game *game)
+void    render_map(t_game *game)
 {
-	int	x;
-	int	y;
+    int x;
+    int y;
 
-	y = 0;
-	while (y < game->map->height)
-	{
-		x = 0;
-		while (x < game->map->width)
-		{
-			if (game->map->map[y][x] == '1')
-				tile_put(game, x * TILE_SIZE, y * TILE_SIZE, 0x1A1A1D);
-			else
-				tile_put(game, x * TILE_SIZE, y * TILE_SIZE, 0xF8FAFC);
-			x++;
-		}
-		y++;
-	}
+    y = 0;
+    while (y < game->map->height)
+    {
+        x = 0;
+        while (x < game->map->width)
+        {
+            if (game->map->map[y][x] == '1')
+                tile_put(game, x * TILE_SIZE, y * TILE_SIZE, 0x1A1A1D);
+            else
+                tile_put(game, x * TILE_SIZE, y * TILE_SIZE, 0xF8FAFC);
+            x++;
+        }
+        y++;
+    }
 }
 
 void render_player(t_game *game)
@@ -93,14 +93,14 @@ void render_player(t_game *game)
         {
             if (dx * dx + dy * dy <= radius * radius)
                 pixel_put(
-					game,
-					center_x + dx,
-					center_y + dy,
-					color
-				);
+                    game,
+                    center_x + dx,
+                    center_y + dy,
+                    color
+                );
             dx++;
         }
         dy++;
     }
-	draw_line(game, 30);
+    draw_line(game, 30);
 }

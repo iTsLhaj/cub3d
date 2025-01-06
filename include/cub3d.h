@@ -9,19 +9,19 @@
 # include <libft.h>
 # include <get_next_line.h>
 
-# define WIN_WIDTH			1280
-# define WIN_HEIGHT			960
-# define WIN_TITLE			"CUB3D"
-# define MOVE_SPEED			4.25
-# define ROT_SPEED			0.05
-# define M_PI				3.14159265358979323846
-# define TILE_SIZE			64
-# define FOV_DEG			60
-# define FOV_RD				FOV_DEG * (M_PI / 180)
-# define COLOR_PRIMARY		0x343131
-# define COLOR_SECONDARY	0xA04747
-# define COLOR_FLOOR		0x9B7653
-# define COLOR_CEILING		0xD9EAFD
+# define WIN_WIDTH          1280
+# define WIN_HEIGHT         960
+# define WIN_TITLE          "CUB3D"
+# define MOVE_SPEED         2.25
+# define ROT_SPEED          0.02
+# define M_PI               3.14159265358979323846
+# define TILE_SIZE          64
+# define FOV_DEG            60
+# define FOV_RD             FOV_DEG * (M_PI / 180)
+# define COLOR_PRIMARY      0x343131
+# define COLOR_SECONDARY    0xA04747
+# define COLOR_FLOOR        0x9B7653
+# define COLOR_CEILING      0xD9EAFD
 
 # include <types.h>
 # include <protos.h>
