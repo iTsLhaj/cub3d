@@ -38,6 +38,6 @@ int     check_wall_len(char **map);
 int     check_is_empty(char *line);
 int     check_map_wall(t_game *cube);
 int     check_map(t_game *cube, char **av);
-void get_texture(t_game *game);
+void    get_texture(t_game *game);
 
 #endif

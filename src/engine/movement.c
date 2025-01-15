@@ -16,7 +16,12 @@ void	update_player(t_game *game)
 {
 	double	new_x;
 	double	new_y;
+	int separate;
 
+	separate = 0;
+	#ifdef BONUS
+	separate = 1;
+	#endif
 	if (game->player->ud == 1)
 	{
 		new_x = game->player->pos_x + game->player->dir_x * MOVE_SPEED;
@@ -37,10 +42,26 @@ void	update_player(t_game *game)
 		new_x = game->player->pos_x - game->player->dir_y * MOVE_SPEED;
 		new_y = game->player->pos_y + game->player->dir_x * MOVE_SPEED;
 	}
-	if (!wall_collision(game, new_x, new_y))
+
+	/** @note without sliding ! */
+	if (!separate)
 	{
-		game->player->pos_x = new_x;
-		game->player->pos_y = new_y;
+		if (!wall_collision(game, new_x, new_y))
+		{
+			game->player->pos_x = new_x;
+			game->player->pos_y = new_y;
+		}
 	}
+	/** @note with sliding ! */
+	if (separate)
+	{
+		// check X-Axis Collision
+		if (!wall_collision(game, new_x, game->player->pos_y))
+			game->player->pos_x = new_x;
+		// check Y-Axis Collision
+		if (!wall_collision(game, game->player->pos_x, new_y))
+			game->player->pos_y = new_y;
+	}
+
 	rotate_player(game);
 }

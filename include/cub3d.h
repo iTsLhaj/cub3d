@@ -9,6 +9,14 @@
 # include <libft.h>
 # include <get_next_line.h>
 
+# define BONUS
+
+# ifdef BONUS
+# define MINIMAP_WIDTH       200
+# define MINIMAP_HEIGHT      200
+# define MINIMAP_SCALE       0.2
+# endif
+
 # define WIN_WIDTH          1280
 # define WIN_HEIGHT         960
 # define WIN_TITLE          "CUB3D"

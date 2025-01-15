@@ -9,9 +9,8 @@ static int  render_next(t_game *game)
         WIN_WIDTH * WIN_HEIGHT * (game->bpp / 8)
     );
     update_player(game);
-    // render_map(game);
-    // render_player(game);
     cast_rays(game);
+    // draw_minimap(game);
     mlx_put_image_to_window(
         game->mlx,
         game->win,
