@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/23 18:27:04 by agaougao          #+#    #+#             */
+/*   Updated: 2025/01/23 18:27:05 by agaougao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 #include <stdio.h>
 
@@ -12,12 +24,7 @@ static void tile_put(t_game *game, int x, int y, int color)
         tx = 0;
         while (tx < TILE_SIZE)
         {
-            pixel_put(
-                game,
-                x + tx,
-                y + ty,
-                color
-            );
+            pixel_put(game, x + tx, y + ty, color);
             tx++;
         }
         ty++;
@@ -26,24 +33,36 @@ static void tile_put(t_game *game, int x, int y, int color)
 
 static void draw_line(t_game *game, int line_size)
 {
-    int start_x = game->player->pos_x;
-    int start_y = game->player->pos_y;
-    double dir_x = game->player->dir_x;
-    double dir_y = game->player->dir_y;
-    int end_x = start_x + (int)(dir_x * line_size);
-    int end_y = start_y + (int)(dir_y * line_size);
-    int dx = abs(end_x - start_x);
-    int dy = abs(end_y - start_y);
-    int sx = (start_x < end_x) ? 1 : -1;
-    int sy = (start_y < end_y) ? 1 : -1;
-    int err = dx - dy;
+    int     start_x;
+    int     start_y;
+    double  dir_x;
+    double  dir_y;
+    int     end_x;
+    int     end_y;
+    int     dx;
+    int     dy;
+    int     sx;
+    int     sy;
+    int     err;
+    int     err2;
 
+    start_x = game->player->pos_x;
+    start_y = game->player->pos_y;
+    dir_x = game->player->dir_x;
+    dir_y = game->player->dir_y;
+    end_x = start_x + (int)(dir_x * line_size);
+    end_y = start_y + (int)(dir_y * line_size);
+    dx = abs(end_x - start_x);
+    dy = abs(end_y - start_y);
+    sx = (start_x < end_x) ? 1 : -1;
+    sy = (start_y < end_y) ? 1 : -1;
+    err = dx - dy;
     while (1)
     {
         pixel_put(game, start_x, start_y, 0xFF0000);
         if (start_x == end_x && start_y == end_y)
-            break;
-        int err2 = err * 2;
+            break ;
+        err2 = err * 2;
         if (err2 > -dy)
         {
             err -= dy;
@@ -78,26 +97,27 @@ void    render_map(t_game *game)
     }
 }
 
-void render_player(t_game *game)
+void    render_player(t_game *game)
 {
-    int center_x = (int)(game->player->pos_x);
-    int center_y = (int)(game->player->pos_y);
-    int radius = 4;
-    int color = 0xAF1740;
+    int center_x;
+    int center_y;
+    int radius;
+    int color;
+    int dy;
+    int dx;
 
-    int dy = -radius;
+    center_x = (int)(game->player->pos_x);
+    center_y = (int)(game->player->pos_y);
+    radius = 4;
+    color = 0xAF1740;
+    dy = -radius;
     while (dy <= radius)
     {
-        int dx = -radius;
+        dx = -radius;
         while (dx <= radius)
         {
             if (dx * dx + dy * dy <= radius * radius)
-                pixel_put(
-                    game,
-                    center_x + dx,
-                    center_y + dy,
-                    color
-                );
+                pixel_put(game, center_x + dx, center_y + dy, color);
             dx++;
         }
         dy++;

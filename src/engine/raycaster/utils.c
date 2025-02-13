@@ -1,5 +1,17 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/23 18:55:11 by agaougao          #+#    #+#             */
+/*   Updated: 2025/01/23 18:55:12 by agaougao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
+#include <stdio.h>
 
 int	touch(t_game *game, double x, double y)
 {
@@ -8,7 +20,8 @@ int	touch(t_game *game, double x, double y)
 	int		grid_y;
 
 	grid = game->map->map;
-	if (x < 0 || y < 0 || x >= game->map->width * TILE_SIZE || y >= game->map->height * TILE_SIZE)
+	if (x < 0 || y < 0 || x >= game->map->width * TILE_SIZE
+		|| y >= game->map->height * TILE_SIZE)
 		return (0);
 	grid_x = floor(x / TILE_SIZE);
 	grid_y = floor(y / TILE_SIZE);

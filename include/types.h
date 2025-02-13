@@ -1,51 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   types.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/23 18:18:03 by agaougao          #+#    #+#             */
+/*   Updated: 2025/01/23 18:35:46 by agaougao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TYPES_H
 # define TYPES_H
 
 typedef struct s_vect2
 {
-    float   x;
-    float   y;
-}   t_vect2;
+    float       x;
+    float       y;
+}               t_vect2;
 
 typedef struct s_ray
 {
-    double  x;
-    double  y;
-    double  angle;
-    double  dir_x;
-    double  dir_y;
-    double  wall_hit_x;
-    double  wall_hit_y;
-    int     map_x;
-    int     map_y;
-    double  wall_dist;
-    int     side; // vertical: 0, horizontal: 1
-    int     index;
-}   t_ray;
+    double      x;
+    double      y;
+    double      angle;
+    double      dir_x;
+    double      dir_y;
+    double      wall_hit_x;
+    double      wall_hit_y;
+    int         map_x;
+    int         map_y;
+    double      wall_dist;
+    int         side;
+    int         index;
+}               t_ray;
 
 typedef struct s_player
 {
-    double  pos_x;
-    double  pos_y;
-    double  dir_x;
-    double  dir_y;
-    double  angle_dir;
-    int     ud; // up: 1, down: -1, none: 0
-    int     lr; // left: 1, right: -1, none: 0
-    int     ro; // rotate_left: 1, rotate_right: -1, none: 0
-}   t_player;
+    double      pos_x;
+    double      pos_y;
+    double      dir_x;
+    double      dir_y;
+    double      angle_dir;
+    int         ud;
+    int         lr;
+    int         ro;
+}               t_player;
 
 typedef struct s_map
 {
-    char    **map;
-    int     width;
-    int     height;
-}   t_map;
+    char        **map;
+    int         width;
+    int         height;
+}               t_map;
 
 typedef struct s_distance
 {
     size_t      height;
-    size_t        width;
+    size_t      width;
 }               t_distance;
 
 typedef struct s_img
@@ -56,7 +68,7 @@ typedef struct s_img
     int         size_line;
     int         endian;
     t_distance  distance;
-} t_img;
+}               t_img;
 typedef struct s_game
 {
     void        *mlx;
@@ -80,9 +92,9 @@ typedef struct s_game
     char        **c;
     int         floor_color;
     int         ceiling_color;
+    double      w_height;
     t_vect2     hint_points;
     t_vect2     vint_points;
-}   t_game;
-
+}               t_game;
 
 #endif

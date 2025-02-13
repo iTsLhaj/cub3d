@@ -47,12 +47,12 @@ typedef struct s_ncollector
  * @param size Number of bytes to allocate
  * @return Newly allocated node, or NULL if allocation fails
  */
-void				*n_malloc(t_ncollector **list, size_t size);
+void					*n_malloc(t_ncollector **list, size_t size);
 
 /**
  * @brief Free all nodes in the list
  * @param list Pointer to the head of memory tracking list
  */
-void				n_free(t_ncollector **list);
+void					n_free(t_ncollector **list);
 
 #endif

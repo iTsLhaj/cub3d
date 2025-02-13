@@ -18,7 +18,8 @@ SRC			=	src/main.c									\
 				src/engine/raycaster/utils.c				\
 				src/engine/render.c							\
 				src/parser/utils.c							\
-				src/engine/handle_textures.c
+				src/engine/handle_textures.c				\
+				src/parser/utils2.c
 OBJ			=	$(SRC:.c=.o)
 INC			=	-I include/
 LIBS		=	libs/pre-compiled/libft.a libs/pre-compiled/libncollector.a
