@@ -53,10 +53,9 @@ void	update_player(t_game *game)
 	double	new_y;
 
 	check_movement(game, &new_x, &new_y);
-	if (!wall_collision(game, new_x, new_y))
-	{
+	if (!wall_collision(game, new_x, game->player->pos_y))
 		game->player->pos_x = new_x;
+	if (!wall_collision(game, game->player->pos_x, new_y))
 		game->player->pos_y = new_y;
-	}
 	rotate_player(game);
 }

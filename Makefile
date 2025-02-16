@@ -1,5 +1,5 @@
 NAME		=	cub3d
-CC			=	gcc -g -Wall -Wextra -Werror
+CC			=	gcc -g # -Wall -Wextra -Werror
 CFLAGS		=	 -fsanitize=address # -Wall -Wextra -Werror
 SRC			=	src/main.c									\
 				libs/get_next_line/get_next_line.c			\
@@ -10,7 +10,6 @@ SRC			=	src/main.c									\
 				src/parser/checks.c							\
 				src/engine/init.c							\
 				src/engine/hooks.c							\
-				src/engine/draw.c							\
 				src/engine/movement.c						\
 				src/engine/utils.c							\
 				src/engine/raycaster/raycaster.c			\

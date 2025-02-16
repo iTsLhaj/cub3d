@@ -54,7 +54,7 @@ void	cast_rays(t_game *game)
 	{
 		ray.side = 0;
 		ray.index = ray_index;
-		check_inters(&h_inter, &v_inter, &ray, &game);
+		check_inters(&h_inter, &v_inter, &ray, game);
 		render_wall(game, &ray);
 		ray_index++;
 		ray.angle += (FOV_RD / WIN_WIDTH);
