@@ -55,6 +55,7 @@ int     get_len(char **map);
 char    **ft_copy_map_to_rect_map(char **map);
 int     get_max_width(char **map);
 int     check_first_wall(char **map);
-int  get_color(t_game *game, t_ray *ray);
+int     get_color(t_game *game, t_ray *ray);
+void	render_minimap(t_game *game);
 
 #endif

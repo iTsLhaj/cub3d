@@ -29,7 +29,7 @@ static double	get_player(char *c)
 			dir = M_PI;
 		else if (*c == 'S')
 			dir = 3 * M_PI / 2;
-		*c = 1;
+		// *c = 1;
 		return (dir);
 	}
 }
@@ -58,24 +58,31 @@ void	init_player(t_game *cube, t_player *player)
 	double	d;
 
 	ft_bzero(player, sizeof(t_player));
-	x = 0;
-	while (x < cube->map->height)
+	d = -1.0f;
+	y = -1;
+	while (++y < cube->map->height)
 	{
-		y = 0;
-		while (y < cube->map->width)
+		x = -1;
+		while (++x < cube->map->width)
 		{
-			d = get_player(&cube->map->map[x][y]);
+			d = get_player(&cube->map->map[y][x]);
 			if (d != -1.0f)
-				break ;
-			y++;
+				break;
 		}
 		if (d != -1.0f)
-			break ;
-		x++;
+			break;
 	}
-	player->pos_y = x * TILE_SIZE + TILE_SIZE / 2;
-	player->pos_x = y * TILE_SIZE + TILE_SIZE / 2;
+	player->grid_x = x;
+	player->grid_y = y;
+	player->pos_x = x * TILE_SIZE + TILE_SIZE / 2;
+	player->pos_y = y * TILE_SIZE + TILE_SIZE / 2;
 	player->angle_dir = d;
 	player->dir_x = cos(player->angle_dir);
 	player->dir_y = sin(player->angle_dir);
+	printf("x:%i, y:%i - px:%f, py:%f - angle:%f\n",
+		x, y,
+		player->pos_x,
+		player->pos_y,
+		d
+	);
 }

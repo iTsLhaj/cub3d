@@ -37,6 +37,8 @@ typedef struct s_ray
 
 typedef struct s_player
 {
+    int         grid_x;
+    int         grid_y;
     double      pos_x;
     double      pos_y;
     double      dir_x;
@@ -69,6 +71,7 @@ typedef struct s_img
     int         endian;
     t_distance  distance;
 }               t_img;
+
 typedef struct s_game
 {
     void        *mlx;

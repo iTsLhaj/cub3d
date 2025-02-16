@@ -19,8 +19,24 @@ static int	render_next(t_game *game)
 	ft_bzero(game->addr, WIN_WIDTH * WIN_HEIGHT * (game->bpp / 8));
 	update_player(game);
 	cast_rays(game);
+	render_minimap(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	return (0);
+}
+
+static void	display_map_grid(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < game->map->height)
+	{
+		x = -1;
+		while (++x < game->map->width)
+			printf("%c", game->map->map[y][x]);
+		printf("\n");
+	}
 }
 
 int	main(int ac, char **av)
@@ -36,6 +52,7 @@ int	main(int ac, char **av)
 		return (ft_putstr_fd("Error: failed to initialize MLX\n", 2), 1);
 	init_player(&cube, &player);
 	cube.player = &player;
+	display_map_grid(&cube);
 	mlx_hook(cube.win, KeyPress, KeyPressMask, key_press, &cube);
 	mlx_hook(cube.win, KeyRelease, KeyReleaseMask, key_release, &cube);
 	mlx_loop_hook(cube.mlx, render_next, &cube);
