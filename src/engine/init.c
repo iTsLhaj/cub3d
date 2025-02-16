@@ -79,32 +79,3 @@ void	init_player(t_game *cube, t_player *player)
 	player->dir_x = cos(player->angle_dir);
 	player->dir_y = sin(player->angle_dir);
 }
-
-// int init_map(t_map *map)
-// {
-//     char    *raw_map[] = {"11111111111111111111", "10000000000000000001",
-//             "10111111111111111001", "10100000000000001001",
-//             "10101111111011111001", "10100000000000000001",
-//             "10111000011111111001", "10000000000001000001",
-//             "10000010000000000001", "10111111111000011001",
-//             "10100000000000001001", "10101111111011111001", NULL};
-//     int     height;
-//     int     width;
-//     int     i;
-
-//     height = 14;
-//     width = 20;
-//     i = -1;
-//     map->map = (char **)ft_calloc(height + 1, sizeof(char *));
-//     if (!map->map)
-//         return (1);
-//     while (++i < height)
-//     {
-//         map->map[i] = ft_strdup(raw_map[i]);
-//         if (!map->map[i])
-//             return (1);
-//     }
-//     map->width = width;
-//     map->height = height;
-//     return (0);
-// }

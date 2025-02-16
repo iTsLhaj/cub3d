@@ -29,6 +29,14 @@ int	get_pixel_image(t_img *img, int x, int y)
 {
 	char	*dst;
 
+	if (x < 0)
+		return (0);
+	else if (x >= WIN_WIDTH)
+		return (0);
+	else if (y < 0)
+		return (0);
+	else if (y >= WIN_HEIGHT)
+		return (0);
 	dst = (img->addr + (y * img->size_line + x * (img->bits_per_pixel / 8)));
 	return (*(unsigned int *)dst);
 }

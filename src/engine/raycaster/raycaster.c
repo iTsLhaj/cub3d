@@ -25,7 +25,7 @@ static void	check_inters(
 	angle_normalized = normalize_angle(ray->angle);
 	*h_inter = get_hinter(game, angle_normalized);
 	*v_inter = get_vinter(game, angle_normalized);
-	if (v_inter <= h_inter)
+	if (*v_inter <= *h_inter)
 	{
 		ray->wall_dist = *v_inter;
 		ray->wall_hit_x = game->vint_points.x;
