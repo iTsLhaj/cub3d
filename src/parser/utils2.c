@@ -61,7 +61,7 @@ char	**ft_copy_map_to_rect_map(char **map)
 		while (map[i][++j])
 			map_cpy[i][j] = map[i][j];
 		while (j < width)
-			map_cpy[i][j++] = ' ';
+			map_cpy[i][j++] = '1';
 		map_cpy[i][j] = '\0';
 	}
 	map_cpy[i] = NULL;
