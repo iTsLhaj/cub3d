@@ -22,6 +22,7 @@
 # include <stdlib.h>
 
 
+# define MINIMAP_SIZE 200
 # define MINIMAP_WIDTH 200
 # define MINIMAP_HEIGHT 200
 # define MINIMAP_SCALE 0.2
