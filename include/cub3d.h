@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:18:50 by agaougao          #+#    #+#             */
-/*   Updated: 2025/01/23 18:18:51 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:27:34 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-
 # define MINIMAP_SIZE 200
 # define MINIMAP_WIDTH 200
 # define MINIMAP_HEIGHT 200
-# define MINIMAP_SCALE 0.2
-
+# define MINIMAP_SCALE 0.25
+# define MINIMAP_WALL_BLOCK_CLR  0x690B22
+# define MINIMAP_WALL_FLOOR_CLR  0xF7F7F7
+# define MINIMAP_WALL_PLAYER_CLR 0x0000FF
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 960
@@ -36,7 +37,6 @@
 # define M_PI 3.14159265358979323846
 # define TILE_SIZE 64
 # define FOV_DEG 60
-# define FOV_RD FOV_DEG * (M_PI / 180)
 # define COLOR_PRIMARY 0x343131
 # define COLOR_SECONDARY 0xA04747
 # define COLOR_FLOOR 0x9B7653

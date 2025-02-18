@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movement.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 19:02:21 by hmouhib           #+#    #+#             */
+/*   Updated: 2025/02/18 20:14:17 by hmouhib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
 static void	rotate_player(t_game *game)
@@ -11,36 +23,45 @@ static void	rotate_player(t_game *game)
 	game->player->dir_y = sin(game->player->angle_dir);
 }
 
+static void	check_mv_flags(t_game *game, double *nx, double *ny)
+{
+	if (game->player->ud == 1)
+	{
+		*nx = game->player->pos_x + game->player->dir_x * MOVE_SPEED;
+		*ny = game->player->pos_y + game->player->dir_y * MOVE_SPEED;
+	}
+	else if (game->player->ud == -1)
+	{
+		*nx = game->player->pos_x - game->player->dir_x * MOVE_SPEED;
+		*ny = game->player->pos_y - game->player->dir_y * MOVE_SPEED;
+	}
+	if (game->player->lr == -1)
+	{
+		*nx = game->player->pos_x + game->player->dir_y * MOVE_SPEED;
+		*ny = game->player->pos_y - game->player->dir_x * MOVE_SPEED;
+	}
+	else if (game->player->lr == 1)
+	{
+		*nx = game->player->pos_x - game->player->dir_y * MOVE_SPEED;
+		*ny = game->player->pos_y + game->player->dir_x * MOVE_SPEED;
+	}
+}
+
 void	update_player(t_game *game)
 {
 	double	new_x;
 	double	new_y;
 
-	if (game->player->ud == 1)
-	{
-		new_x = game->player->pos_x + game->player->dir_x * MOVE_SPEED;
-		new_y = game->player->pos_y + game->player->dir_y * MOVE_SPEED;
-	}
-	else if (game->player->ud == -1)
-	{
-		new_x = game->player->pos_x - game->player->dir_x * MOVE_SPEED;
-		new_y = game->player->pos_y - game->player->dir_y * MOVE_SPEED;
-	}
-	if (game->player->lr == -1)
-	{
-		new_x = game->player->pos_x + game->player->dir_y * MOVE_SPEED;
-		new_y = game->player->pos_y - game->player->dir_x * MOVE_SPEED;
-	}
-	else if (game->player->lr == 1)
-	{
-		new_x = game->player->pos_x - game->player->dir_y * MOVE_SPEED;
-		new_y = game->player->pos_y + game->player->dir_x * MOVE_SPEED;
-	}
-	
+	new_x = 0;
+	new_y = 0;
+	check_mv_flags(
+		game,
+		&new_x,
+		&new_y
+		);
 	if (!wall_collision(game, new_x, game->player->pos_y))
 		game->player->pos_x = new_x;
 	if (!wall_collision(game, game->player->pos_x, new_y))
 		game->player->pos_y = new_y;
-	
 	rotate_player(game);
 }

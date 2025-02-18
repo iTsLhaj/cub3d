@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:40:11 by agaougao          #+#    #+#             */
-/*   Updated: 2025/01/23 18:46:04 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:26:59 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,15 @@ static void	draw_floor_ceiling(t_game *game, t_ray *ray, int s_pix, int e_pix)
 
 void	render_wall(t_game *game, t_ray *ray)
 {
+	double	pp_dist;
 	double	wall_height;
 	double	e_pix;
 	double	s_pix;
 
 	ray->wall_dist *= cos(normalize_angle(ray->angle
 				- game->player->angle_dir));
-	wall_height = (TILE_SIZE / ray->wall_dist) * ((WIN_WIDTH / 2) / tan(FOV_RD
-				/ 2));
+	pp_dist = ((WIN_WIDTH / 2) / tan((FOV_DEG * (M_PI / 180)) / 2));
+	wall_height = (TILE_SIZE / ray->wall_dist) * pp_dist;
 	e_pix = (WIN_HEIGHT / 2) + (wall_height / 2);
 	s_pix = (WIN_HEIGHT / 2) - (wall_height / 2);
 	if (e_pix > WIN_HEIGHT)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:55:08 by agaougao          #+#    #+#             */
-/*   Updated: 2025/01/23 18:55:09 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:27:18 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	cast_rays(t_game *game)
 	t_ray	ray;
 
 	ft_bzero(&ray, sizeof(t_ray));
-	ray.angle = game->player->angle_dir - (FOV_RD / 2);
+	ray.angle = game->player->angle_dir - ((FOV_DEG * (M_PI / 180)) / 2);
 	ray_index = 0;
 	while (ray_index < WIN_WIDTH)
 	{
@@ -57,6 +57,6 @@ void	cast_rays(t_game *game)
 		check_inters(&h_inter, &v_inter, &ray, game);
 		render_wall(game, &ray);
 		ray_index++;
-		ray.angle += (FOV_RD / WIN_WIDTH);
+		ray.angle += ((FOV_DEG * (M_PI / 180)) / WIN_WIDTH);
 	}
 }

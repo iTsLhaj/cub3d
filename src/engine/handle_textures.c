@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:44:49 by agaougao          #+#    #+#             */
-/*   Updated: 2025/01/23 18:28:30 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:10:46 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ t_img	*put_img_add(t_game *game, char *path)
 		free(img);
 		exit(1);
 	}
-	puts("here\n");
 	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel),
 			&(img->size_line), &(img->endian));
 	return (img);

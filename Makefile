@@ -1,6 +1,6 @@
 NAME		=	cub3d
 CC			=	gcc -g # -Wall -Wextra -Werror
-CFLAGS		=	-fsanitize=address # -Wall -Wextra -Werror
+CFLAGS		=	# -fsanitize=address # -Wall -Wextra -Werror
 SRC			=	src/main.c									\
 				libs/get_next_line/get_next_line.c			\
 				libs/get_next_line/get_next_line_utils.c	\
@@ -19,7 +19,9 @@ SRC			=	src/main.c									\
 				src/parser/utils.c							\
 				src/engine/handle_textures.c				\
 				src/parser/utils2.c							\
-				src/engine/minimap.c
+				src/engine/minimap_utils.c					\
+				src/engine/minimap.c						\
+				src/mem_clean.c
 OBJ			=	$(SRC:.c=.o)
 INC			=	-I include/
 LIBS		=	libs/pre-compiled/libft.a libs/pre-compiled/libncollector.a

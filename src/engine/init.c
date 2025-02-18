@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:31:40 by agaougao          #+#    #+#             */
-/*   Updated: 2025/01/23 18:32:25 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:17:17 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-/** @todo recheck the compass ! */
 static double	get_player(char *c)
 {
 	double	dir;
@@ -29,7 +28,6 @@ static double	get_player(char *c)
 			dir = M_PI;
 		else if (*c == 'S')
 			dir = 3 * M_PI / 2;
-		// *c = 1;
 		return (dir);
 	}
 }
@@ -58,7 +56,6 @@ void	init_player(t_game *cube, t_player *player)
 	double	d;
 
 	ft_bzero(player, sizeof(t_player));
-	d = -1.0f;
 	y = -1;
 	while (++y < cube->map->height)
 	{
@@ -67,10 +64,10 @@ void	init_player(t_game *cube, t_player *player)
 		{
 			d = get_player(&cube->map->map[y][x]);
 			if (d != -1.0f)
-				break;
+				break ;
 		}
 		if (d != -1.0f)
-			break;
+			break ;
 	}
 	player->grid_x = x;
 	player->grid_y = y;
@@ -79,10 +76,4 @@ void	init_player(t_game *cube, t_player *player)
 	player->angle_dir = d;
 	player->dir_x = cos(player->angle_dir);
 	player->dir_y = sin(player->angle_dir);
-	printf("x:%i, y:%i - px:%f, py:%f - angle:%f\n",
-		x, y,
-		player->pos_x,
-		player->pos_y,
-		d
-	);
 }
