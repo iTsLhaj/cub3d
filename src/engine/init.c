@@ -16,6 +16,7 @@ static double	get_player(char *c)
 {
 	double	dir;
 
+	dir = -1.0f;
 	if (ft_strchr("NWSE", *c) == NULL)
 		return (-1.0f);
 	else
@@ -34,10 +35,12 @@ static double	get_player(char *c)
 
 int	init_mlx(t_game *game)
 {
+	game->mlx = NULL;
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (1);
 	get_texture(game);
+	game->win = NULL;
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
 	if (!game->win)
 		return (1);
@@ -71,9 +74,9 @@ void	init_player(t_game *cube, t_player *player)
 	}
 	player->grid_x = x;
 	player->grid_y = y;
-	player->pos_x = x * TILE_SIZE + TILE_SIZE / 2;
-	player->pos_y = y * TILE_SIZE + TILE_SIZE / 2;
+	player->pos_x = (float)(x * TILE_SIZE) + (TILE_SIZE / 2.0f);
+	player->pos_y = (float)(y * TILE_SIZE) + (TILE_SIZE / 2.0f);
 	player->angle_dir = d;
-	player->dir_x = cos(player->angle_dir);
-	player->dir_y = sin(player->angle_dir);
+	player->dir_x = cos(d);
+	player->dir_y = sin(d);
 }

@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:49:25 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/18 20:35:56 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/19 17:00:22 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@
 static int	render_next(t_game *game)
 {
 	ft_bzero(game->addr, WIN_WIDTH * WIN_HEIGHT * (game->bpp / 8));
-	if (game->close)
-	{
-		mlx_loop_end(game->mlx);
-		return (1);
-	}
 	update_player(game);
 	cast_rays(game);
 	render_minimap(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	return (0);
+}
+
+static int	destroy(t_game *game)
+{
+	mlx_loop_end(game->mlx);
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -45,7 +46,7 @@ int	main(int ac, char **av)
 	cube.player = &player;
 	mlx_hook(cube.win, KeyPress, KeyPressMask, key_press, &cube);
 	mlx_hook(cube.win, KeyRelease, KeyReleaseMask, key_release, &cube);
-	mlx_hook(cube.win, DestroyAll, DestroyNotify, ft_end, &cube);
+	mlx_hook(cube.win, DestroyAll, DestroyNotify, destroy, &cube);
 	mlx_loop_hook(cube.mlx, render_next, &cube);
 	mlx_loop(cube.mlx);
 	ft_end(&cube);

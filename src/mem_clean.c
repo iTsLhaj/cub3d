@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:36:38 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/18 20:36:38 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/19 17:01:00 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,25 @@
 
 int	ft_end(t_game *game)
 {
-	int	i;
+	int i;
 
-	if (game->map)
+	i = 0;
+	while (i < 4)
 	{
-		if (game->map->map)
-		{
-			i = 0;
-			while (i < game->map->height)
-				free(game->map->map[i++]);
-			free(game->map->map);
-		}
-		free(game->map);
+		mlx_destroy_image(game->mlx, game->texture_buffer[i]->img);
+		free(game->texture_buffer[i]);
+		i++;
 	}
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
-	if (game->mlx)
-	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-	}
-	mlx_loop_end(game->mlx);
+
+	i = 0;
+	while (i < game->map->height)
+		free(game->map->map[i++]);
+	free(game->map->map);
+
+	mlx_destroy_image(game->mlx, game->img);
+	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+
 	return (0);
 }

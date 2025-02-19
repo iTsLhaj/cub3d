@@ -98,7 +98,6 @@ typedef struct s_game
 	double		w_height;
 	t_vect2		hint_points;
 	t_vect2		vint_points;
-	uint8_t		close;
 }				t_game;
 
 typedef struct s_minimap_data

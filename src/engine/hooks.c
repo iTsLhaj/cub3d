@@ -29,7 +29,10 @@ int	key_press(int keycode, t_game *game)
 	else if (keycode == XK_Right)
 		game->player->ro = -1;
 	else if (keycode == XK_Escape)
-		ft_end(game);
+	{
+		mlx_loop_end(game->mlx);
+		return (1);
+	}
 	return (0);
 }
 
