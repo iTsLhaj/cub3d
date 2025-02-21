@@ -6,11 +6,16 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:02:21 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/18 20:14:17 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/21 12:59:46 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+static double	deg_to_rad(double deg)
+{
+	return deg * (M_PI / 180);
+}
 
 static void	rotate_player(t_game *game)
 {
@@ -35,16 +40,27 @@ static void	check_mv_flags(t_game *game, double *nx, double *ny)
 		*nx = game->player->pos_x - game->player->dir_x * MOVE_SPEED;
 		*ny = game->player->pos_y - game->player->dir_y * MOVE_SPEED;
 	}
-	if (game->player->lr == -1)
+	else if (game->player->lr == -1)
 	{
-		*nx = game->player->pos_x + game->player->dir_y * MOVE_SPEED;
-		*ny = game->player->pos_y - game->player->dir_x * MOVE_SPEED;
+		*nx = game->player->pos_x - cos(game->player->angle_dir + deg_to_rad(90)) * MOVE_SPEED;
+		*ny = game->player->pos_y - sin(game->player->angle_dir + deg_to_rad(90)) * MOVE_SPEED;
 	}
 	else if (game->player->lr == 1)
 	{
-		*nx = game->player->pos_x - game->player->dir_y * MOVE_SPEED;
-		*ny = game->player->pos_y + game->player->dir_x * MOVE_SPEED;
+		*nx = game->player->pos_x + cos(game->player->angle_dir + deg_to_rad(90)) * MOVE_SPEED;
+		*ny = game->player->pos_y + sin(game->player->angle_dir + deg_to_rad(90)) * MOVE_SPEED;
 	}
+
+// 	if (game->player->lr == -1)
+// 	{
+// 		*nx = game->player->pos_x + game->player->dir_y * MOVE_SPEED;
+// 		*ny = game->player->pos_y - game->player->dir_x * MOVE_SPEED;
+// 	}
+// 	else if (game->player->lr == 1)
+// 	{
+// 		*nx = game->player->pos_x - game->player->dir_y * MOVE_SPEED;
+// 		*ny = game->player->pos_y + game->player->dir_x * MOVE_SPEED;
+// 	}
 }
 
 void	update_player(t_game *game)
