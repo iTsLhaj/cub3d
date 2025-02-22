@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:02:21 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/22 00:01:08 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/22 16:37:53 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ static void	check_mv_flags(t_game *game, double *nx, double *ny)
 	}
 	else if (game->player->lr == -1)
 	{
-		*nx = game->player->pos_x - cos(
-				game->player->angle_dir + deg_to_rad(90)) * MOVE_SPEED;
-		*ny = game->player->pos_y - sin(
-				game->player->angle_dir + deg_to_rad(90)) * MOVE_SPEED;
+		*nx = game->player->pos_x - cos(normalize_angle(
+					game->player->angle_dir + deg_to_rad(90))) * MOVE_SPEED;
+		*ny = game->player->pos_y - sin(normalize_angle(
+					game->player->angle_dir + deg_to_rad(90))) * MOVE_SPEED;
 	}
 	else if (game->player->lr == 1)
 	{
-		*nx = game->player->pos_x + cos(
-				game->player->angle_dir + deg_to_rad(90)) * MOVE_SPEED;
-		*ny = game->player->pos_y + sin(
-				game->player->angle_dir + deg_to_rad(90)) * MOVE_SPEED;
+		*nx = game->player->pos_x + cos(normalize_angle(
+					game->player->angle_dir + deg_to_rad(90))) * MOVE_SPEED;
+		*ny = game->player->pos_y + sin(normalize_angle(
+					game->player->angle_dir + deg_to_rad(90))) * MOVE_SPEED;
 	}
 }
 
