@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:00:45 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/22 14:50:39 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/22 15:33:06 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,19 @@ int	check_other_side(char **map)
 int	check_map_wall(t_game *cube)
 {
 	char	**tmp;
+	char	**map;
 
 	tmp = ft_copy_map_to_rect_map(cube->map->map + 6);
 	if (!check_first_wall(tmp) || !check_last_wall(tmp) || !check_sides(tmp)
 		|| !check_other_side(tmp))
-		return (1);
+		return (free_all(tmp), 1);
 	if (!check_wall_len(tmp))
-		return (1);
-	cube->map->width = get_max_width(tmp);
-	cube->map->height = get_len(tmp);
+		return (free_all(tmp), 1);
+	free_all(tmp);
+	map = ft_copy_map_to_rect_map2(cube->map->map + 6);
+	cube->map->width = get_max_width(map);
+	cube->map->height = get_len(map);
 	free_all(cube->map->map);
-	cube->map->map = tmp;
+	cube->map->map = map;
 	return (0);
 }

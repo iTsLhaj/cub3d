@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:05:51 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/22 14:55:14 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/22 15:13:45 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,22 @@ char	**get_map(char *file)
 	char	**map;
 	char	*str;
 	char	*ptr;
+	char	*new_ptr;
 
 	ptr = ft_calloc(1, 1);
 	fd = open(file, O_RDWR);
 	str = get_next_line(fd);
-	if (str == NULL)
-		perror("empty file\n");
 	while (str)
 	{
-		if (str == NULL)
-			break ;
-		ptr = ft_strjoin(ptr, str);
+		new_ptr = ft_strjoin(ptr, str);
+		free(ptr);
 		free(str);
+		ptr = new_ptr;
 		str = get_next_line(fd);
 	}
 	map = ft_split(ptr, '\n');
 	free(ptr);
+	close(fd);
 	return (map);
 }
 

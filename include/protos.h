@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:19:30 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/22 14:50:04 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/22 15:23:15 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void	render_minimap(t_game *game);
 
 int		ft_end(t_game *game);
 void	free_all(char **str);
+char	**ft_copy_map_to_rect_map2(char **map);
 
 #endif

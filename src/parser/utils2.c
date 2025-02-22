@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:10:19 by agaougao          #+#    #+#             */
-/*   Updated: 2025/01/23 18:16:13 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/22 15:37:13 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,34 @@ int	get_len(char **map)
 }
 
 char	**ft_copy_map_to_rect_map(char **map)
+{
+	char	**map_cpy;
+	int		width;
+	int		i;
+	int		j;
+
+	map_cpy = malloc(sizeof(char *) * (get_len(map) + 1));
+	if (!map_cpy)
+		return (NULL);
+	width = get_max_width(map);
+	i = -1;
+	while (map && map[++i])
+	{
+		j = -1;
+		map_cpy[i] = malloc(sizeof(char) * (width + 1));
+		if (!map_cpy[i])
+			return (NULL);
+		while (map[i][++j])
+			map_cpy[i][j] = map[i][j];
+		while (j < width)
+			map_cpy[i][j++] = ' ';
+		map_cpy[i][j] = '\0';
+	}
+	map_cpy[i] = NULL;
+	return (map_cpy);
+}
+
+char	**ft_copy_map_to_rect_map2(char **map)
 {
 	char	**map_cpy;
 	int		width;

@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:49:25 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/20 16:24:57 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/22 15:33:58 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,14 @@ int	main(int ac, char **av)
 
 	ft_memset(&cube, 0, sizeof(t_game));
 	if (check_arg(ac, av))
+	{
 		return (ft_putstr_fd("Error: invalid argument\n", 2), 1);
+	}
 	if (check_map(&cube, av))
+	{
+		ft_end(&cube);
 		return (ft_putstr_fd("Error: invalid map\n", 2), 1);
+	}
 	if (init_mlx(&cube))
 		return (ft_putstr_fd("Error: failed to initialize MLX\n", 2), 1);
 	init_player(&cube, &player);
