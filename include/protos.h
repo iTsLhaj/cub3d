@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protos.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:19:30 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/18 19:49:31 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/22 14:50:04 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void	calculate_view(t_game *game, t_minimap_data *map_data);
 void	render_minimap(t_game *game);
 
 int		ft_end(t_game *game);
+void	free_all(char **str);
 
 #endif
