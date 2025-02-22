@@ -3,36 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   mem_clean.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:36:38 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/19 17:01:00 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/21 15:47:25 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	ft_end(t_game *game)
+void free_all(char **str)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while (i < 4)
-	{
-		mlx_destroy_image(game->mlx, game->texture_buffer[i]->img);
-		free(game->texture_buffer[i]);
-		i++;
-	}
+    i = 0;
+    while (str[i])
+    {
+        free(str[i]);
+        i++;
+    }
+    free(str);
+}    
+int ft_end(t_game *game)
+{
+    int i;
 
-	i = 0;
-	while (i < game->map->height)
-		free(game->map->map[i++]);
-	free(game->map->map);
+    i = 0;
+    while (i < 4)
+    {
+        mlx_destroy_image(game->mlx, game->texture_buffer[i]->img);
+        free(game->texture_buffer[i]);
+        i++;
+    }
 
-	mlx_destroy_image(game->mlx, game->img);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
+    // i = 0;
+    // while (i < game->map->height)
+    //     free(game->map->map[i++]);
+    // free(game->map->map);
 
-	return (0);
+    mlx_destroy_image(game->mlx, game->img);
+    mlx_destroy_window(game->mlx, game->win);
+    mlx_destroy_display(game->mlx);
+    free(game->mlx);
+    free_all(game->c);
+    free(game->no);
+    free_all(game->f);
+    free(game->so);
+    free(game->we);
+    free(game->ea);
+    free_all(game->map->map); // Free the 2D map array
+    free(game->map); // Free the map structure
+    // free(game);
+
+    return (0);
 }
