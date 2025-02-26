@@ -6,12 +6,22 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 02:18:51 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/26 02:18:52 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:27:40 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+/**
+ * draw_tile - Draws a scaled tile on the minimap.
+ * @game: Pointer to the game structure.
+ * @x: X-coordinate of the tile on the minimap.
+ * @y: Y-coordinate of the tile on the minimap.
+ * @color: Color of the tile.
+ *
+ * Fills a rectangular area representing a tile, scaled by MINIMAP_SCALE,
+ * by setting pixels using pixel_put.
+ */
 static void	draw_tile(t_game *game, int x, int y, int color)
 {
 	int	i;
@@ -35,8 +45,8 @@ void	draw_minimap_tile(t_game *game, int i, int j)
 
 	tile_x = (game->player->pos_x / TILE_SIZE) + j;
 	tile_y = (game->player->pos_y / TILE_SIZE) + i;
-	draw_x = 80 + (j * (TILE_SIZE * MINIMAP_SCALE));
-	draw_y = 80 + (i * (TILE_SIZE * MINIMAP_SCALE));
+	draw_x = game->mp_data.padding + (j * (TILE_SIZE * MINIMAP_SCALE));
+	draw_y = game->mp_data.padding + (i * (TILE_SIZE * MINIMAP_SCALE));
 	if (tile_x >= 0 && tile_x < game->map->width && tile_y >= 0
 		&& tile_y < game->map->height)
 	{

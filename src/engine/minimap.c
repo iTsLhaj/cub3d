@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 02:18:59 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/26 02:19:07 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:28:07 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,14 @@ void	render_minimap(t_game *game)
 	int				x;
 
 	mp.size = 5;
-	mp.padding = (TILE_SIZE * MINIMAP_SCALE) / mp.size;
+	mp.padding = (TILE_SIZE * MINIMAP_SCALE) * mp.size;
 	x = mp.padding - (2 * (TILE_SIZE * MINIMAP_SCALE));
 	mp.center_x = x + (2 * (TILE_SIZE * MINIMAP_SCALE));
 	mp.center_y = x + (2 * (TILE_SIZE * MINIMAP_SCALE));
 	mp.offset_x = (((int)game->player->pos_x % TILE_SIZE) * MINIMAP_SCALE) / 2;
 	mp.offset_y = (((int)game->player->pos_y % TILE_SIZE) * MINIMAP_SCALE) / 2;
 	game->mp_data = mp;
+	draw_background(game);
+	draw_minimap_tiles(game);
+	draw_minimap_player(game);
 }
