@@ -6,12 +6,11 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:55:08 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/18 19:27:18 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 02:15:56 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-#include <stdio.h>
 
 static void	check_inters(
 	float *h_inter,

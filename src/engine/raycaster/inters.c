@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   inters.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:55:02 by agaougao          #+#    #+#             */
-/*   Updated: 2025/01/23 18:55:03 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/26 02:15:53 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-#include <stdio.h>
 
 float	get_hinter(t_game *game, float angle)
 {
