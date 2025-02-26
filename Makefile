@@ -1,6 +1,6 @@
 NAME		=	cub3d
-CC			=	gcc -g # -Wall -Wextra -Werror
-CFLAGS		=	-fsanitize=address # -Wall -Wextra -Werror
+CC			=	cc -g
+CFLAGS		=	-Wall -Wextra -Werror
 SRC			=	src/main.c									\
 				libs/get_next_line/get_next_line.c			\
 				libs/get_next_line/get_next_line_utils.c	\
