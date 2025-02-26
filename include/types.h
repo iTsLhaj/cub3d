@@ -6,12 +6,22 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:18:03 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/18 20:25:28 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 02:13:18 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
+
+typedef struct s_minimap_data
+{
+	int			size;
+	int			padding;
+	int			center_x;
+	int			center_y;
+	float		offset_x;
+	float		offset_y;
+}				t_minimap_data;
 
 typedef struct s_vect2
 {
@@ -74,40 +84,31 @@ typedef struct s_img
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	void		*img;
-	char		*addr;
-	t_img		*texture_buffer[4];
-	int			bpp;
-	int			height;
-	int			width;
-	int			line_len;
-	int			endian;
-	t_player	*player;
-	t_map		*map;
-	char		*file;
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
-	char		**f;
-	char		**c;
-	int			floor_color;
-	int			ceiling_color;
-	double		w_height;
-	t_vect2		hint_points;
-	t_vect2		vint_points;
+	void			*mlx;
+	void			*win;
+	void			*img;
+	char			*addr;
+	t_img			*texture_buffer[4];
+	int				bpp;
+	int				height;
+	int				width;
+	int				line_len;
+	int				endian;
+	t_player		*player;
+	t_map			*map;
+	char			*file;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	char			**f;
+	char			**c;
+	int				floor_color;
+	int				ceiling_color;
+	double			w_height;
+	t_vect2			hint_points;
+	t_vect2			vint_points;
+	t_minimap_data	mp_data;
 }				t_game;
-
-typedef struct s_minimap_data
-{
-	float		view_top_left_x;
-	float		view_top_left_y;
-	int			start_tile_x;
-	int			start_tile_y;
-	float		offset_x;
-	float		offset_y;
-}				t_minimap_data;
 
 #endif
