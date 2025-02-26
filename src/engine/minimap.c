@@ -5,87 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 18:51:41 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/18 19:21:15 by hmouhib          ###   ########.fr       */
+/*   Created: 2025/02/26 02:18:59 by hmouhib           #+#    #+#             */
+/*   Updated: 2025/02/26 02:19:07 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static void	draw_minimap_background(t_game *game, int bg_color)
-{
-	int	x;
-	int	y;
-
-	y = -1;
-	while (++y < MINIMAP_HEIGHT + (TILE_SIZE * MINIMAP_SCALE))
-	{
-		x = -1;
-		while (++x < MINIMAP_WIDTH + (TILE_SIZE * MINIMAP_SCALE))
-			pixel_put(game, x, y, bg_color);
-	}
-}
-
-static void	draw_minimap_tiles(t_game *game, t_minimap_data *map_data)
+void	draw_background(t_game *game)
 {
 	int	i;
 	int	j;
-	int	draw_x;
-	int	draw_y;
 
-	i = 0;
-	while (1)
+	j = -1;
+	while (++j < MINIMAP_HEIGHT)
 	{
-		draw_y = i * (TILE_SIZE * MINIMAP_SCALE) - map_data->offset_y;
-		if (draw_y >= MINIMAP_HEIGHT)
-			break ;
-		j = 0;
-		while (1)
+		i = -1;
+		while (++i < MINIMAP_WIDTH)
+			pixel_put(game, j, i, 0x000000);
+	}
+}
+
+void	draw_minimap_tiles(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = -game->mp_data.size - 1;
+	while (++i <= game->mp_data.size)
+	{
+		j = -game->mp_data.size - 1;
+		while (++j <= game->mp_data.size)
+			draw_minimap_tile(game, i, j);
+	}
+}
+
+void	draw_minimap_player(t_game *game)
+{
+	int				size;
+	int				i;
+	int				j;
+	t_minimap_data	mp;
+
+	mp = game->mp_data;
+	size = TILE_SIZE * MINIMAP_SCALE / 2;
+	i = -size / 2;
+	while (i < size / 2)
+	{
+		j = -size / 2;
+		while (j < size / 2)
 		{
-			draw_x = j * (TILE_SIZE * MINIMAP_SCALE) - map_data->offset_x;
-			if (draw_x >= MINIMAP_WIDTH)
-				break ;
-			draw_minimap_tile((int [4]){
-				map_data->start_tile_x + j, map_data->start_tile_y + i,
-				draw_x, draw_y}, game
-				);
+			pixel_put(game, mp.center_x + mp.offset_x + i, mp.center_y
+				+ mp.offset_y + j, MINIMAP_PLAYER_CLR);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	draw_minimap_player(t_game *game, t_minimap_data *map_data)
-{
-	int	i;
-	int	j;
-	int	player_size;
-
-	player_size = (int)(TILE_SIZE * MINIMAP_SCALE / 2);
-	i = -1;
-	while (++i < player_size)
-	{
-		j = -1;
-		while (++j < player_size)
-			pixel_put(
-				game,
-				((int)((game->player->pos_x - map_data->view_top_left_x)
-						* MINIMAP_SCALE) - player_size / 2) + j,
-				((int)((game->player->pos_y - map_data->view_top_left_y)
-						* MINIMAP_SCALE) - player_size / 2) + i,
-				MINIMAP_WALL_PLAYER_CLR
-				);
-	}
-}
-
 void	render_minimap(t_game *game)
 {
-	t_minimap_data	mp_data;
+	t_minimap_data	mp;
+	int				x;
 
-	if (!game->player || !game->map)
-		return ;
-	draw_minimap_background(game, 0x000000);
-	calculate_view(game, &mp_data);
-	draw_minimap_tiles(game, &mp_data);
-	draw_minimap_player(game, &mp_data);
+	mp.size = 5;
+	mp.padding = (TILE_SIZE * MINIMAP_SCALE) / mp.size;
+	x = mp.padding - (2 * (TILE_SIZE * MINIMAP_SCALE));
+	mp.center_x = x + (2 * (TILE_SIZE * MINIMAP_SCALE));
+	mp.center_y = x + (2 * (TILE_SIZE * MINIMAP_SCALE));
+	mp.offset_x = (((int)game->player->pos_x % TILE_SIZE) * MINIMAP_SCALE) / 2;
+	mp.offset_y = (((int)game->player->pos_y % TILE_SIZE) * MINIMAP_SCALE) / 2;
+	game->mp_data = mp;
 }
