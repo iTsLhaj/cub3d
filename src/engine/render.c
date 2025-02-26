@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:40:11 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/18 19:26:59 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 01:52:53 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ static void	draw_floor_ceiling(t_game *game, t_ray *ray, int s_pix, int e_pix)
 
 	i = e_pix;
 	while (i < WIN_HEIGHT)
-		mlx_put_pixel_(game, ray->index, i++, COLOR_FLOOR);
+		mlx_put_pixel_(game, ray->index, i++, game->floor_color);
 	i = 0;
 	while (i < s_pix)
-		mlx_put_pixel_(game, ray->index, i++, COLOR_CEILING);
+		mlx_put_pixel_(game, ray->index, i++, game->ceiling_color);
 }
 
 void	render_wall(t_game *game, t_ray *ray)

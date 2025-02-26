@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:05:51 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/22 15:13:45 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/26 02:15:33 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	check_map(t_game *cube, char **av)
 		return (1);
 	if (check_map_wall(cube))
 		return (1);
-	cube->ceiling_color = convert_color(cube);
-	cube->floor_color = convert_color(cube);
+	cube->ceiling_color = convert_color(cube, 1);
+	cube->floor_color = convert_color(cube, 0);
 	return (0);
 }

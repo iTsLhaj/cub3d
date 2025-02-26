@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:07:44 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/20 15:32:03 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/26 02:18:31 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,24 @@ int	check_is_empty(char *line)
 	return (0);
 }
 
-int	convert_color(t_game *cube)
+int	convert_color(t_game *cube, int fc)
 {
 	int	red;
 	int	green;
 	int	blue;
 
-	red = ft_atoi(cube->c[0]);
-	green = ft_atoi(cube->c[1]);
-	blue = ft_atoi(cube->c[2]);
+	if (fc)
+	{
+		red = ft_atoi(cube->c[0]);
+		green = ft_atoi(cube->c[1]);
+		blue = ft_atoi(cube->c[2]);
+	}
+	else
+	{
+		red = ft_atoi(cube->f[0]);
+		green = ft_atoi(cube->f[1]);
+		blue = ft_atoi(cube->f[2]);
+	}
 	if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0
 		|| blue > 255)
 		return (-1);
