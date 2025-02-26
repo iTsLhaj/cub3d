@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:48:24 by agaougao          #+#    #+#             */
-/*   Updated: 2025/01/23 18:48:25 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/02/26 02:46:26 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+/**
+ * pixel_put - Sets a pixel color in the image buffer.
+ * @game: Pointer to the game structure.
+ * @x: X-coordinate of the pixel.
+ * @y: Y-coordinate of the pixel.
+ * @color: The color value to set (in RGBA format).
+ *
+ * Calculates the pixel's memory address and writes the color to it.
+ */
 void	pixel_put(t_game *game, int x, int y, int color)
 {
 	char	*dst;
@@ -20,6 +29,17 @@ void	pixel_put(t_game *game, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+/**
+ * normalize_angle - Keeps an angle within the range [0, 2π].
+ * @angle: The angle in radians to be normalized.
+ *
+ * Ensures the given angle remains within the valid range by adjusting it:  
+ * - If the angle is negative, it adds 2π.  
+ * - If the angle exceeds 2π, it subtracts 2π.  
+ * This keeps the angle bounded within one full rotation.
+ *
+ * Return: The normalized angle in the range [0, 2π].
+ */
 double	normalize_angle(double angle)
 {
 	if (angle < 0)
@@ -29,6 +49,17 @@ double	normalize_angle(double angle)
 	return (angle);
 }
 
+/**
+ * wall_collision - Checks for collision with walls at the new player position.
+ * @game: Pointer to the game structure.
+ * @new_x: The new X-coordinate of the player.
+ * @new_y: The new Y-coordinate of the player.
+ *
+ * Calculates the grid position based on the new coordinates and checks
+ * whether the player would collide with a wall (represented by '1' on the map).
+ * If the new position is out of bounds or a wall is encountered, returns 1.
+ * Otherwise, returns 0.
+ */
 int	wall_collision(t_game *game, double new_x, double new_y)
 {
 	int	grid_x;

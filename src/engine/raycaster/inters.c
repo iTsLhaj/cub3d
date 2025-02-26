@@ -6,12 +6,22 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:55:02 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 02:15:53 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:07:47 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+/**
+ * get_hinter - Computes the horizontal intersection of a ray.
+ * @game: Pointer to the game structure.
+ * @angle: The ray's angle in radians.
+ *
+ * Determines the nearest horizontal intersection point of the ray by stepping
+ * along the grid. Uses trigonometric calculations to find the step size and
+ * adjusts the stepping direction based on the ray's angle. The function
+ * returns the computed distance from the player's position to the hit point.
+ */
 float	get_hinter(t_game *game, float angle)
 {
 	float	hx;
@@ -39,6 +49,16 @@ float	get_hinter(t_game *game, float angle)
 				- game->player->pos_y, 2)));
 }
 
+/**
+ * get_vinter - Computes the vertical intersection of a ray.
+ * @game: Pointer to the game structure.
+ * @angle: The ray's angle in radians.
+ *
+ * Determines the nearest vertical intersection point of the ray by stepping
+ * along the grid. Uses trigonometric calculations to find the step size and
+ * adjusts the stepping direction based on the ray's angle. The function
+ * returns the computed distance from the player's position to the hit point.
+ */
 float	get_vinter(t_game *game, float angle)
 {
 	float	vx;

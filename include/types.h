@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:18:03 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 02:13:18 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 02:51:03 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ typedef struct s_ray
 
 typedef struct s_player
 {
-	int			grid_x;
-	int			grid_y;
 	double		pos_x;
 	double		pos_y;
 	double		dir_x;

@@ -6,17 +6,29 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:02:21 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/22 16:37:53 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 03:04:48 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+/**
+ * deg_to_rad - Converts degrees to radians.
+ * @deg: The angle in degrees.
+ *
+ * Returns the angle in radians.
+ */
 static double	deg_to_rad(double deg)
 {
 	return (deg * (M_PI / 180));
 }
 
+/**
+ * rotate_player - Rotates the player based on the rotation flag.
+ * @game: Pointer to the game structure.
+ *
+ * Adjusts the player's direction angle and updates the direction vector.
+ */
 static void	rotate_player(t_game *game)
 {
 	if (game->player->ro == 1)
@@ -28,6 +40,16 @@ static void	rotate_player(t_game *game)
 	game->player->dir_y = sin(game->player->angle_dir);
 }
 
+/**
+ * check_mv_flags - Calculates the player's new position based on movement flags.
+ * @game: Pointer to the game structure.
+ * @nx: Pointer to store the calculated new X position.
+ * @ny: Pointer to store the calculated new Y position.
+ *
+ * Updates the new position based on the flags:
+ * - 'ud' (up/down) for forward/backward movement.
+ * - 'lr' (left/right) for strafing left or right.
+ */
 static void	check_mv_flags(t_game *game, double *nx, double *ny)
 {
 	if (game->player->ud == 1)
@@ -56,6 +78,15 @@ static void	check_mv_flags(t_game *game, double *nx, double *ny)
 	}
 }
 
+/**
+ * update_player - Updates the player's position based on movement flags and handles rotation.
+ * @game: Pointer to the game structure.
+ *
+ * Performs movement and rotation updates:
+ * - `check_mv_flags`: Updates the movement offsets for left/right/up/down.
+ * - `wall_collision`: Checks if the player can move to the new position (handles sliding).
+ * - `rotate_player`: Updates the player's rotation based on input.
+ */
 void	update_player(t_game *game)
 {
 	double	new_x;

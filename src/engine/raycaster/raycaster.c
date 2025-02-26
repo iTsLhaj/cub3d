@@ -6,12 +6,22 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:55:08 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 02:15:56 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 03:09:18 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+/**
+ * check_inters - Checks for the closest intersection (horizontal or vertical).
+ * @h_inter: Pointer to store the horizontal intersection distance.
+ * @v_inter: Pointer to store the vertical intersection distance.
+ * @ray: Pointer to the ray structure that holds ray-related data.
+ * @game: Pointer to the game structure.
+ *
+ * Calculates the closest intersection distance between horizontal and vertical rays,
+ * updates the ray's hit position, distance, and sets the side flag for rendering.
+ */
 static void	check_inters(
 	float *h_inter,
 	float *v_inter,
@@ -39,6 +49,14 @@ static void	check_inters(
 	}
 }
 
+/**
+ * cast_rays - Casts rays from the player's position to render the scene.
+ * @game: Pointer to the game structure.
+ *
+ * Initializes ray angles based on the player's direction and field of view (FOV),
+ * checks for intersections with walls (both horizontal and vertical),
+ * and renders the corresponding wall strips.
+ */
 void	cast_rays(t_game *game)
 {
 	int		ray_index;

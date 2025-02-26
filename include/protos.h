@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:19:30 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 02:19:46 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:40:29 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int		get_max_width(char **map);
 int		check_first_wall(char **map);
 int		get_color(t_game *game, t_ray *ray);
 
-int		ft_end(t_game *game);
-void	free_all(char **str);
+int		ft_end(t_game *game); // [EEEH]
+void	free_all(char **str); // [EEEH]
 char	**ft_copy_map_to_rect_map2(char **map);
 
 void	draw_minimap_tile(t_game *game, int i, int j);

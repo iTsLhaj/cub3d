@@ -6,33 +6,52 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:31:40 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/18 20:17:17 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 02:54:50 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static double	get_player(char *c)
+/**
+ * get_player - Returns the player's direction angle based on the map character.
+ * @c: The map character representing the player's orientation.
+ *
+ * Returns the corresponding direction angle in radians:  
+ * - 'E' -> 0  
+ * - 'N' -> π/2  
+ * - 'W' -> π  
+ * - 'S' -> 3π/2  
+ * Returns -1 if the character is not a valid player direction ('N', 'S', 'E', 'W').
+ */
+static double	get_player(char c)
 {
 	double	dir;
 
 	dir = -1.0f;
-	if (ft_strchr("NWSE", *c) == NULL)
+	if (ft_strchr("NWSE", c) == NULL)
 		return (-1.0f);
 	else
 	{
-		if (*c == 'E')
+		if (c == 'E')
 			dir = 0;
-		else if (*c == 'N')
+		else if (c == 'N')
 			dir = M_PI / 2;
-		else if (*c == 'W')
+		else if (c == 'W')
 			dir = M_PI;
-		else if (*c == 'S')
+		else if (c == 'S')
 			dir = 3 * M_PI / 2;
 		return (dir);
 	}
 }
 
+/**
+ * init_mlx - Initializes the MLX library and creates the game window and image.
+ * @game: Pointer to the game structure.
+ *
+ * Initializes the MLX instance, creates a new window, and loads textures.
+ * Also creates a new image for rendering and retrieves the image's data 
+ * address for pixel manipulation. Returns 1 on failure, 0 on success.
+ */
 int	init_mlx(t_game *game)
 {
 	game->mlx = NULL;
@@ -52,6 +71,14 @@ int	init_mlx(t_game *game)
 	return (0);
 }
 
+/**
+ * init_player - Initializes the player structure and sets the initial position and direction.
+ * @cube: Pointer to the game structure containing the map.
+ * @player: Pointer to the player structure to be initialized.
+ *
+ * Finds the player's position on the map, sets the pixel position, 
+ * and initializes direction vectors based on the player's orientation in the map.
+ */
 void	init_player(t_game *cube, t_player *player)
 {
 	int		x;
@@ -65,15 +92,13 @@ void	init_player(t_game *cube, t_player *player)
 		x = -1;
 		while (++x < cube->map->width)
 		{
-			d = get_player(&cube->map->map[y][x]);
+			d = get_player(cube->map->map[y][x]);
 			if (d != -1.0f)
 				break ;
 		}
 		if (d != -1.0f)
 			break ;
 	}
-	player->grid_x = x;
-	player->grid_y = y;
 	player->pos_x = (float)(x * TILE_SIZE) + (TILE_SIZE / 2.0f);
 	player->pos_y = (float)(y * TILE_SIZE) + (TILE_SIZE / 2.0f);
 	player->angle_dir = d;
