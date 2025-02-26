@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:31:40 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 02:54:50 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:51:18 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * - 'N' -> π/2  
  * - 'W' -> π  
  * - 'S' -> 3π/2  
- * Returns -1 if the character is not a valid player direction ('N', 'S', 'E', 'W').
+ * Returns -1 if the character is not a valid player direction.
  */
 static double	get_player(char c)
 {
@@ -72,12 +72,14 @@ int	init_mlx(t_game *game)
 }
 
 /**
- * init_player - Initializes the player structure and sets the initial position and direction.
+ * init_player - Initializes the player structure
+ * and sets the initial position and direction.
  * @cube: Pointer to the game structure containing the map.
  * @player: Pointer to the player structure to be initialized.
  *
  * Finds the player's position on the map, sets the pixel position, 
- * and initializes direction vectors based on the player's orientation in the map.
+ * and initializes direction vectors
+ * based on the player's orientation in the map.
  */
 void	init_player(t_game *cube, t_player *player)
 {

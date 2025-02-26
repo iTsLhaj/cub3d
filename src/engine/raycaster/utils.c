@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:55:11 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 04:24:14 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:56:03 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @y: Y-coordinate in the game world.
  *
  * Determines whether the given (x, y) position is within bounds and not a wall.
- * Returns 1 if the position is free, 0 if it collides with a wall or is out of bounds.
+ * Returns 1 if the position is free, 0 if upon collition with a wall.
  */
 int	touch(t_game *game, double x, double y)
 {
@@ -50,8 +50,10 @@ int	touch(t_game *game, double x, double y)
  * @step: Pointer to the step size.
  * @dir: 'h' for horizontal, 'v' for vertical.
  *
- * Ensures the ray starts at the correct tile boundary and moves in the right direction.
- * Returns 1 if no adjustment is needed, -1 if the intercept is shifted by TILE_SIZE.
+ * Ensures the ray hits the correct tile boundary & moves in the right direction.
+ * Returns
+ * 	- ( 1) if no adjustment is needed
+ * 	- (-1) if the `inter` is shifted by TILE_SIZE.
  */
 int	inter_check(float angle, float *inter, float *step, char dir)
 {

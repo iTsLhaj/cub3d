@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:55:08 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 03:09:18 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:53:21 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
  * @ray: Pointer to the ray structure that holds ray-related data.
  * @game: Pointer to the game structure.
  *
- * Calculates the closest intersection distance between horizontal and vertical rays,
- * updates the ray's hit position, distance, and sets the side flag for rendering.
+ * Calculates the closest intersection distance
+ * between horizontal and vertical rays, and updates
+ * the ray's hit position, distance, and sets the side flag
+ * for rendering purposes.
  */
 static void	check_inters(
 	float *h_inter,
@@ -53,7 +55,7 @@ static void	check_inters(
  * cast_rays - Casts rays from the player's position to render the scene.
  * @game: Pointer to the game structure.
  *
- * Initializes ray angles based on the player's direction and field of view (FOV),
+ * Initializes ray angles based on the player's direction and FOV,
  * checks for intersections with walls (both horizontal and vertical),
  * and renders the corresponding wall strips.
  */

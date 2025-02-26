@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:36:38 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/26 04:44:36 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:50:19 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ void	free_all(char **str)
  * ft_end - Frees all allocated memory for the game and terminates the program.
  * @game: Pointer to the game structure.
  *
- * Frees the texture buffers, the ceiling and floor color arrays, the texture paths,
- * the game map, and the map structure. Also calls `free_mlx` to clean up the MLX library resources.
+ * Frees the texture buffers, the ceiling and floor color arrays
+ * the texture paths, the game map, and the map structure.
+ * Also calls `free_mlx` to clean up the MLX library resources.
  * Always returns 0.
  */
 int	ft_end(t_game *game)

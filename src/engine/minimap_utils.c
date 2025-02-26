@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 02:18:51 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/26 04:33:33 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:52:21 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	draw_tile(t_game *game, int x, int y, int color)
  * @j: Column index relative to the player.
  *
  * Determines the corresponding map tile and draws it with the appropriate color.
- * Walls are drawn with MINIMAP_WALL_CLR, and empty spaces with MINIMAP_EMPTY_CLR.
+ *  - Walls are drawn with MINIMAP_WALL_CLR.
+ *  - Empty spaces with MINIMAP_EMPTY_CLR.
  * 
  * NOTE:
  * when drawing minimap tiles above the background,

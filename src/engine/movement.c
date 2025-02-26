@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:02:21 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/26 03:04:48 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/26 04:51:46 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,13 @@ static void	check_mv_flags(t_game *game, double *nx, double *ny)
 }
 
 /**
- * update_player - Updates the player's position based on movement flags and handles rotation.
+ * update_player - Updates the player's position
+ * based on movement flags and handles rotation.
  * @game: Pointer to the game structure.
  *
  * Performs movement and rotation updates:
  * - `check_mv_flags`: Updates the movement offsets for left/right/up/down.
- * - `wall_collision`: Checks if the player can move to the new position (handles sliding).
+ * - `wall_collision`: Checks if the player can move to the new position.
  * - `rotate_player`: Updates the player's rotation based on input.
  */
 void	update_player(t_game *game)
