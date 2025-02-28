@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:40:11 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 01:52:53 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/02/28 06:44:25 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,57 @@ static void	draw_floor_ceiling(t_game *game, t_ray *ray, int s_pix, int e_pix)
 		mlx_put_pixel_(game, ray->index, i++, game->ceiling_color);
 }
 
+/**
+ * @brief This function calculates the wall strip height and draws it on screen!
+ * @details
+ * 
+ *    So our player looks at the wall:
+ *    
+ *          |\
+ *          | \ 
+ *    wall  |__(FOV) [PLAYER]
+ *          | /
+ *          |/ e.g: here the ray hits!
+ *    
+ *    + ray->wall_dist: Distance to the wall (ray->wall_hit).
+ *    + pp_dist: Distance to projection plane, calculated as:
+ *        pp_dist = (WIN_WIDTH/2) / tan((FOV_DEG * (M_PI / 180)) / 2).
+ *    
+ *    Projection plane view:
+ * 
+ *              projection plane!
+ *             /
+ *          |\ /
+ *          | |\
+ *          | | \
+ *    wall->| |  (*> <- [player] (cam)
+ *          | | /
+ *          | |/
+ *          |/
+ *    
+ *    Notice two similar triangles (Thales Theorem):
+ * 
+ *          |\
+ *          | \
+ *          |  \      |\
+ *          |   \     | \
+ *        A |    >  C |  >
+ *          |   /     | / D
+ *          |  / B    |/
+ *          | /
+ *          |/
+ *    
+ *    By Thales Theorem (A/B = C/D):
+ *    - A: TILE_SIZE (real wall height),
+ *    - B: ray->wall_dist (distance to wall),
+ *    - C: pp_dist (distance to projection plane),
+ *    - D: wall_height (projected wall height on screen).
+ *    
+ *    So: D = (A / B) * C
+ *    -> wall_height = (TILE_SIZE / ray->wall_dist) * pp_dist.
+ *    This gives us the walls height in pixels, then we draw it!
+ * 
+ */
 void	render_wall(t_game *game, t_ray *ray)
 {
 	double	pp_dist;
@@ -97,3 +148,4 @@ void	render_wall(t_game *game, t_ray *ray)
 	draw_wall(game, ray, s_pix, e_pix);
 	draw_floor_ceiling(game, ray, s_pix, e_pix);
 }
+
