@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:40:11 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/28 06:44:25 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:40:55 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,4 +148,3 @@ void	render_wall(t_game *game, t_ray *ray)
 	draw_wall(game, ray, s_pix, e_pix);
 	draw_floor_ceiling(game, ray, s_pix, e_pix);
 }
-
