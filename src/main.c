@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:49:25 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 02:31:07 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/03/13 12:52:47 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	render_next(t_game *game)
 	ft_bzero(game->addr, WIN_WIDTH * WIN_HEIGHT * (game->bpp / 8));
 	update_player(game);
 	cast_rays(game);
-	render_minimap(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	return (0);
 }
