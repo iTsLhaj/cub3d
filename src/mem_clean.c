@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:36:38 by hmouhib           #+#    #+#             */
-/*   Updated: 2025/02/26 04:50:19 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/03/13 12:55:33 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ static void	free_mlx(t_game *game)
 {
 	if (game->mlx)
 	{
-		mlx_destroy_image(game->mlx, game->img);
-		mlx_destroy_window(game->mlx, game->win);
+		if (game->img)
+			mlx_destroy_image(game->mlx, game->img);
+		if (game->win)
+			mlx_destroy_window(game->mlx, game->win);
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
@@ -33,7 +35,8 @@ static void	free_mlx(t_game *game)
  * free_all - Frees a 2D array of strings (char**).
  * @str: Pointer to the 2D array to be freed.
  *
- * Iterates through the array and frees each string, then frees the array itself.
+ * Iterates through the array and frees each string,
+	then frees the array itself.
  */
 void	free_all(char **str)
 {
@@ -61,15 +64,15 @@ int	ft_end(t_game *game)
 {
 	int	i;
 
-	if (game->texture_buffer[0] != NULL)
+	i = 0;
+	while (i < 4)
 	{
-		i = 0;
-		while (i < 4)
+		if (game->texture_buffer[0] != NULL)
 		{
 			mlx_destroy_image(game->mlx, game->texture_buffer[i]->img);
 			free(game->texture_buffer[i]);
-			i++;
 		}
+		i++;
 	}
 	free_all(game->c);
 	free(game->no);
