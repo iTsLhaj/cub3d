@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:44:49 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/18 20:10:46 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/03/13 12:08:15 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ t_img	*put_img_add(t_game *game, char *path)
 		return (NULL);
 	}
 	img->img = mlx_xpm_file_to_image(game->mlx, path, &width, &height);
-	if (!img->img || size_texture(width, height) == 1 || !path)
+	if (!img->img || size_texture(width, height) == 1)
 	{
 		ft_putstr_fd("Error: could not load texture\n", 2);
 		free(img);
+		ft_end(game);
 		exit(1);
 	}
 	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel),
