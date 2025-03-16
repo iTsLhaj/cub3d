@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 16:26:07 by agaougao          #+#    #+#              #
-#    Updated: 2024/06/13 22:17:49 by marvin           ###   ########.fr        #
+#    Updated: 2025/03/14 14:50:11 by agaougao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,16 +25,7 @@ CFLAGS 	= -Wall -Wextra -Werror
 			ft_calloc.c     ft_memchr.c     ft_putchar_fd.c ft_strdup.c     ft_strlen.c     ft_toupper.c \
 			ft_substr.c 	ft_strtrim.c  	ft_split.c  	ft_itoa.c \
 			ft_lstadd_back.c	ft_lstadd_front.c	ft_lstsize.c	ft_lstclear.c \
-			ft_lstiter.c	 ft_lstdelone.c	ft_lstnew.c	ft_lstlast.c \
-			ftgc_strtrim.c \
-			ftgc_calloc.c \
-			ftgc_lstnew.c \
-			ftgc_itoa.c \
-			ftgc_substr.c \
-			ftgc_strdup.c \
-			ftgc_strmapi.c \
-			ftgc_strjoin.c \
-			ftgc_split.c
+			ft_lstiter.c	 ft_lstdelone.c	ft_lstnew.c	ft_lstlast.c
 			
 OBJS	= $(SRCS:.c=.o)
 

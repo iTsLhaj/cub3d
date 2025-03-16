@@ -22,23 +22,29 @@ SRC			=	src/main.c									\
 				src/mem_clean.c
 OBJ			=	$(SRC:.c=.o)
 INC			=	-I include/
-LIBS		=	libs/pre-compiled/libft.a libs/pre-compiled/libncollector.a
+# LIBS		=	libs/pre-compiled/libft.a libs/pre-compiled/libncollector.a
+LIBFT		=	libs/libft/libft.a
 LMLX		=	-lmlx -lXext -lX11 -lm -lz
+MAKE		=	make -C
 
 
+all: libft $(NAME)
 
-all: $(NAME)
+libft:
+	@$(MAKE) libs/libft
 
 $(NAME): $(OBJ)
-	$(CC) $(INC) $^ -o $@ $(CFLAGS) $(LIBS) $(LMLX)
+	$(CC) $(INC) $^ -o $@ $(CFLAGS) $(LIBFT) $(LMLX)
 
 %.o: %.c
 	$(CC) $(INC) $(CFLAGS) -c $< -o $@
 
 clean:
+	@$(MAKE) libs/libft clean
 	rm -f $(OBJ)
 
 fclean: clean
+	@$(MAKE) libs/libft fclean
 	rm -f $(NAME)
 
 re: fclean all

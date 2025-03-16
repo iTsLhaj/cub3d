@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:18:50 by agaougao          #+#    #+#             */
-/*   Updated: 2025/03/13 12:48:23 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/03/15 14:49:34 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <mlx.h>
 # include <stdlib.h>
+# include <ctype.h>
 
 # define MINIMAP_WIDTH 192
 # define MINIMAP_HEIGHT 192
@@ -30,8 +31,8 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 960
 # define WIN_TITLE "CUB3D"
-# define MOVE_SPEED 4.6
-# define ROT_SPEED 0.05
+# define MOVE_SPEED 8.6
+# define ROT_SPEED 0.07
 # define M_PI 3.14159265358979323846
 # define TILE_SIZE 64
 # define FOV_DEG 60
