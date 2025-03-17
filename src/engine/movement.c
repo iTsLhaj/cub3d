@@ -41,7 +41,8 @@ static void	rotate_player(t_game *game)
 }
 
 /**
- * check_mv_flags - Calculates the player's new position based on movement flags.
+ * check_mv_flags
+	- Calculates the player's new position based on movement flags.
  * @game: Pointer to the game structure.
  * @nx: Pointer to store the calculated new X position.
  * @ny: Pointer to store the calculated new Y position.
@@ -64,17 +65,17 @@ static void	check_mv_flags(t_game *game, double *nx, double *ny)
 	}
 	else if (game->player->lr == -1)
 	{
-		*nx = game->player->pos_x - cos(normalize_angle(
-					game->player->angle_dir + deg_to_rad(90))) * MOVE_SPEED;
-		*ny = game->player->pos_y - sin(normalize_angle(
-					game->player->angle_dir + deg_to_rad(90))) * MOVE_SPEED;
+		*nx = game->player->pos_x - cos(normalize_angle(game->player->angle_dir
+					+ deg_to_rad(90))) * MOVE_SPEED;
+		*ny = game->player->pos_y - sin(normalize_angle(game->player->angle_dir
+					+ deg_to_rad(90))) * MOVE_SPEED;
 	}
 	else if (game->player->lr == 1)
 	{
-		*nx = game->player->pos_x + cos(normalize_angle(
-					game->player->angle_dir + deg_to_rad(90))) * MOVE_SPEED;
-		*ny = game->player->pos_y + sin(normalize_angle(
-					game->player->angle_dir + deg_to_rad(90))) * MOVE_SPEED;
+		*nx = game->player->pos_x + cos(normalize_angle(game->player->angle_dir
+					+ deg_to_rad(90))) * MOVE_SPEED;
+		*ny = game->player->pos_y + sin(normalize_angle(game->player->angle_dir
+					+ deg_to_rad(90))) * MOVE_SPEED;
 	}
 }
 
@@ -95,11 +96,7 @@ void	update_player(t_game *game)
 
 	new_x = 0;
 	new_y = 0;
-	check_mv_flags(
-		game,
-		&new_x,
-		&new_y
-		);
+	check_mv_flags(game, &new_x, &new_y);
 	if (!wall_collision(game, new_x, game->player->pos_y))
 		game->player->pos_x = new_x;
 	if (!wall_collision(game, game->player->pos_x, new_y))

@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 11:31:39 by agaougao          #+#    #+#             */
-/*   Updated: 2025/03/17 12:47:59 by agaougao         ###   ########.fr       */
+/*   Created: 2025/01/23 18:10:19 by agaougao          #+#    #+#             */
+/*   Updated: 2025/03/17 13:18:32 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <cub3d.h>
 
-char	*ft_strnstr(const char *str, const char *str2, size_t len)
+int	get_max_width(char **map)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	width;
+	int	len;
 
 	i = 0;
-	if (!str && len == 0)
-		return (NULL);
-	if (*str2 == '\0')
-		return ((char *)str);
-	while (str[i] && i < len)
+	width = -1;
+	while (map && map[i])
 	{
-		if (str[i] == str2[0])
-		{
-			j = 0;
-			while (str2[j] && str[i + j] && i + j < len && str[i
-					+ j] == str2[j])
-				j++;
-			if (str2[j] == '\0')
-				return ((char *)str + i);
-		}
+		len = ft_strlen(map[i]);
+		if (width < len)
+			width = len;
 		i++;
 	}
-	return (0);
+	return (width);
+}
+
+int	get_len(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map && map[i])
+		i++;
+	return (i);
 }

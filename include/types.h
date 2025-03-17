@@ -15,70 +15,70 @@
 
 typedef struct s_minimap_data
 {
-	int			size;
-	int			padding;
-	int			center_x;
-	int			center_y;
-	float		offset_x;
-	float		offset_y;
-}				t_minimap_data;
+	int				size;
+	int				padding;
+	int				center_x;
+	int				center_y;
+	float			offset_x;
+	float			offset_y;
+}					t_minimap_data;
 
 typedef struct s_vect2
 {
-	float		x;
-	float		y;
-}				t_vect2;
+	float			x;
+	float			y;
+}					t_vect2;
 
 typedef struct s_ray
 {
-	double		x;
-	double		y;
-	double		angle;
-	double		dir_x;
-	double		dir_y;
-	double		wall_hit_x;
-	double		wall_hit_y;
-	int			map_x;
-	int			map_y;
-	double		wall_dist;
-	int			side;
-	int			index;
-}				t_ray;
+	double			x;
+	double			y;
+	double			angle;
+	double			dir_x;
+	double			dir_y;
+	double			wall_hit_x;
+	double			wall_hit_y;
+	int				map_x;
+	int				map_y;
+	double			wall_dist;
+	int				side;
+	int				index;
+}					t_ray;
 
 typedef struct s_player
 {
-	double		pos_x;
-	double		pos_y;
-	double		dir_x;
-	double		dir_y;
-	double		angle_dir;
-	int			ud;
-	int			lr;
-	int			ro;
-}				t_player;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			angle_dir;
+	int				ud;
+	int				lr;
+	int				ro;
+}					t_player;
 
 typedef struct s_map
 {
-	char		**map;
-	int			width;
-	int			height;
-}				t_map;
+	char			**map;
+	int				width;
+	int				height;
+}					t_map;
 
 typedef struct s_distance
 {
-	size_t		height;
-	size_t		width;
-}				t_distance;
+	size_t			height;
+	size_t			width;
+}					t_distance;
 
 typedef struct s_img
 {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			size_line;
-	int			endian;
-	t_distance	distance;
-}				t_img;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				size_line;
+	int				endian;
+	t_distance		distance;
+}					t_img;
 
 typedef struct s_game
 {
@@ -107,6 +107,6 @@ typedef struct s_game
 	t_vect2			hint_points;
 	t_vect2			vint_points;
 	t_minimap_data	mp_data;
-}				t_game;
+}					t_game;
 
 #endif

@@ -13,19 +13,19 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <ctype.h>
 # include <fcntl.h>
 # include <get_next_line.h>
 # include <libft.h>
 # include <math.h>
 # include <mlx.h>
 # include <stdlib.h>
-# include <ctype.h>
 
 # define MINIMAP_WIDTH 192
 # define MINIMAP_HEIGHT 192
 # define MINIMAP_SCALE 0.25
-# define MINIMAP_WALL_CLR  0x690B22
-# define MINIMAP_EMPTY_CLR  0xF7F7F7
+# define MINIMAP_WALL_CLR 0x690B22
+# define MINIMAP_EMPTY_CLR 0xF7F7F7
 # define MINIMAP_PLAYER_CLR 0x0000FF
 
 # define WIN_WIDTH 1280

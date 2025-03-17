@@ -16,11 +16,11 @@
  * get_player - Returns the player's direction angle based on the map character.
  * @c: The map character representing the player's orientation.
  *
- * Returns the corresponding direction angle in radians:  
- * - 'E' -> 0  
- * - 'N' -> π/2  
- * - 'W' -> π  
- * - 'S' -> 3π/2  
+ * Returns the corresponding direction angle in radians:
+ * - 'E' -> 0
+ * - 'N' -> π/2
+ * - 'W' -> π
+ * - 'S' -> 3π/2
  * Returns -1 if the character is not a valid player direction.
  */
 static double	get_player(char c)
@@ -49,7 +49,7 @@ static double	get_player(char c)
  * @game: Pointer to the game structure.
  *
  * Initializes the MLX instance, creates a new window, and loads textures.
- * Also creates a new image for rendering and retrieves the image's data 
+ * Also creates a new image for rendering and retrieves the image's data
  * address for pixel manipulation. Returns 1 on failure, 0 on success.
  */
 int	init_mlx(t_game *game)
@@ -77,7 +77,7 @@ int	init_mlx(t_game *game)
  * @cube: Pointer to the game structure containing the map.
  * @player: Pointer to the player structure to be initialized.
  *
- * Finds the player's position on the map, sets the pixel position, 
+ * Finds the player's position on the map, sets the pixel position,
  * and initializes direction vectors
  * based on the player's orientation in the map.
  */

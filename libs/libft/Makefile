@@ -6,7 +6,7 @@
 #    By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 16:26:07 by agaougao          #+#    #+#              #
-#    Updated: 2025/03/14 14:50:11 by agaougao         ###   ########.fr        #
+#    Updated: 2025/03/17 12:49:54 by agaougao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,5 +42,4 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	
 re: fclean all

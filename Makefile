@@ -19,6 +19,7 @@ SRC			=	src/main.c									\
 				src/parser/utils.c							\
 				src/engine/handle_textures.c				\
 				src/parser/utils2.c							\
+				src/parser/utils3.c							\
 				src/mem_clean.c
 OBJ			=	$(SRC:.c=.o)
 INC			=	-I include/
