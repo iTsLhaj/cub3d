@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:18:50 by agaougao          #+#    #+#             */
-/*   Updated: 2025/03/15 14:49:34 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:00:24 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,10 @@
 # include <mlx.h>
 # include <stdlib.h>
 
-# define MINIMAP_WIDTH 192
-# define MINIMAP_HEIGHT 192
-# define MINIMAP_SCALE 0.25
-# define MINIMAP_WALL_CLR 0x690B22
-# define MINIMAP_EMPTY_CLR 0xF7F7F7
-# define MINIMAP_PLAYER_CLR 0x0000FF
-
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 960
 # define WIN_TITLE "CUB3D"
-# define MOVE_SPEED 8.6
+# define MOVE_SPEED 100.6
 # define ROT_SPEED 0.07
 # define M_PI 3.14159265358979323846
 # define TILE_SIZE 64

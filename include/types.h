@@ -3,25 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:18:03 by agaougao          #+#    #+#             */
-/*   Updated: 2025/02/26 02:51:03 by hmouhib          ###   ########.fr       */
+/*   Updated: 2025/03/18 13:02:55 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
-
-typedef struct s_minimap_data
-{
-	int				size;
-	int				padding;
-	int				center_x;
-	int				center_y;
-	float			offset_x;
-	float			offset_y;
-}					t_minimap_data;
 
 typedef struct s_vect2
 {
@@ -106,7 +96,6 @@ typedef struct s_game
 	double			w_height;
 	t_vect2			hint_points;
 	t_vect2			vint_points;
-	t_minimap_data	mp_data;
 }					t_game;
 
 #endif

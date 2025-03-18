@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:05:51 by agaougao          #+#    #+#             */
-/*   Updated: 2025/03/17 13:20:33 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:03:11 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_for_double(char **map, char *tmp)
 	i = -1;
 	while (map && map[++i] && i < 6)
 		;
-	if (i == 6)
+	if (i == 6 && map[i])
 		tmp2 = ft_strnstr(tmp, map[i], ft_strlen(tmp));
 	else
 		return ;
