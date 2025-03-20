@@ -1,10 +1,10 @@
 WE textures/wood3.xpm
-SO textures/greybrick7.xpm 
+SO textures/greybrick7.xpm           
 EA textures/wood3.xpm
 NO textures/greybrick7.xpm
 
-F 255,0,0
 C 217,234,253
+F 155,118,83
 
 111111111111111111111111111
 100000000000000000000000001

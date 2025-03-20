@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:19:30 by agaougao          #+#    #+#             */
-/*   Updated: 2025/03/14 15:50:31 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/03/20 00:28:43 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ void	free_all(char **str);
 char	**ft_copy_map_to_rect_map2(char **map);
 int		check_color(t_game *cube);
 int		check_num_colors(char *str);
+int		check_xpm(char *str);
 
+void	split_space(t_game *cube);
+void	set_compass(t_game *cube);
 #endif

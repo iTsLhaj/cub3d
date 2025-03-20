@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:07:44 by agaougao          #+#    #+#             */
-/*   Updated: 2025/03/17 12:37:17 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/03/19 23:26:04 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,16 @@ void	ft_set_data(t_game *cube, int i, int j)
 	ft_set_data1(cube, i, j);
 	if (map->map[i][j] == 'F' && map->map[i][j + 1] == ' '
 		&& count_commas(map->map[i]) == 2)
+	{
+		if (cube->f)
+			return ;
 		cube->f = ft_split(&map->map[i][j + 2], ',');
+	}
 	if (map->map[i][j] == 'C' && map->map[i][j + 1] == ' '
 		&& count_commas(map->map[i]) == 2)
+	{
+		if (cube->c)
+			return ;
 		cube->c = ft_split(&map->map[i][j + 2], ',');
+	}
 }

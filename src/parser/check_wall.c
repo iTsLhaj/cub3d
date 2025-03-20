@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:05:20 by agaougao          #+#    #+#             */
-/*   Updated: 2025/03/17 12:37:04 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/03/19 23:41:48 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,9 @@ int	check_color(t_game *cube)
 	cube->ceiling_color = convert_color(cube, 1);
 	cube->floor_color = convert_color(cube, 0);
 	if (cube->ceiling_color == -1 || cube->floor_color == -1)
+		return (1);
+	if (check_xpm(cube->ea) || check_xpm(cube->so) || check_xpm(cube->no)
+		|| check_xpm(cube->we))
 		return (1);
 	return (0);
 }

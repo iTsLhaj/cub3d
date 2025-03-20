@@ -6,13 +6,13 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:05:51 by agaougao          #+#    #+#             */
-/*   Updated: 2025/03/18 13:03:11 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/03/20 00:33:41 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	check_for_double(char **map, char *tmp)
+void	check_for_double(char **map, char *tmp, t_map *tmap)
 {
 	int		i;
 	char	*tmp2;
@@ -28,11 +28,16 @@ void	check_for_double(char **map, char *tmp)
 	while (tmp2 && tmp2[++i])
 	{
 		if (tmp2[i] == '\n' && tmp2[i + 1] == '\n')
+		{
+			free_all(map);
+			free(tmp);
+			free(tmap);
 			(ft_putstr_fd("Error\nWrong map\n", 2), exit(1));
+		}
 	}
 }
 
-char	**get_map(char *file)
+char	**get_map(char *file, t_map *tmap)
 {
 	int		fd;
 	char	**map;
@@ -52,7 +57,7 @@ char	**get_map(char *file)
 		str = get_next_line(fd);
 	}
 	map = ft_split(ptr, '\n');
-	check_for_double(map, ptr);
+	check_for_double(map, ptr, tmap);
 	free(ptr);
 	close(fd);
 	return (map);
@@ -120,18 +125,14 @@ int	check_map(t_game *cube, char **av)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	cube->map = (t_map *)malloc(sizeof(t_map));
 	cube->file = av[1];
-	cube->ea = NULL;
-	cube->no = NULL;
-	cube->so = NULL;
-	cube->we = NULL;
-	cube->f = NULL;
-	cube->c = NULL;
-	cube->map->map = get_map(cube->file);
-	while (cube->map->map[i])
-		i++;
+	set_compass(cube);
+	cube->map->map = get_map(cube->file, cube->map);
+	split_space(cube);
+	while (cube->map->map[++i])
+		;
 	if (i < 5)
 		return (1);
 	if (check_compass(cube))

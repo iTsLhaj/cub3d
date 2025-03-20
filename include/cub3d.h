@@ -6,7 +6,7 @@
 /*   By: agaougao <agaougao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:18:50 by agaougao          #+#    #+#             */
-/*   Updated: 2025/03/17 14:00:24 by agaougao         ###   ########.fr       */
+/*   Updated: 2025/03/19 23:01:56 by agaougao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 960
 # define WIN_TITLE "CUB3D"
-# define MOVE_SPEED 100.6
+# define MOVE_SPEED 8.6
 # define ROT_SPEED 0.07
 # define M_PI 3.14159265358979323846
 # define TILE_SIZE 64
